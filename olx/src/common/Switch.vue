@@ -17,7 +17,7 @@ export default {
     position: relative;
     display: inline-block;
     width: 60px;
-    height: 34px;
+    height: 28px;
   }
   
   /* Hide default HTML checkbox */
@@ -43,21 +43,23 @@ export default {
   .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 20px;
+    width: 20px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: var(--color-light);
     -webkit-transition: .4s;
     transition: .4s;
   }
   
   input:checked + .slider {
-    background-color: rgb(253, 88, 203);
+    /* background-color: rgb(253, 88, 203); */
+    background-color: var(--color-darkGrey);
   }
   
   input:focus + .slider {
-    box-shadow: 0 0 1px rgb(253, 88, 203);
+    /* box-shadow: 0 0 1px rgb(253, 88, 203); */
+    box-shadow: 0 0 1px var(--color-darkGrey);
   }
   
   input:checked + .slider:before {
@@ -68,7 +70,7 @@ export default {
   
   /* Rounded sliders */
   .slider.round {
-    border-radius: 34px;
+    border-radius: 28px;
   }
   
   .slider.round:before {
