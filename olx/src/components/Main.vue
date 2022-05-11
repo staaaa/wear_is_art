@@ -37,28 +37,33 @@ export default {
 </script>
 <style>
 [data-color="white"]{
-    background-color: rgb(200, 200, 200);
+    /* background-color: rgb(200, 200, 200); */
+    background-color: var(--color-lightGrey);
     transition: 0.5s;
 }
 [data-color="black"]{
-    background-color: rgb(49, 49, 49);
+    /* background-color: rgb(49, 49, 49); */
+    background-color: var(--color-darkGrey);
     transition: 0.5s;
 }
 [data-color="light"]{
-    background-color: rgb(245, 245, 245);
-    color:black;
+    /* background-color: rgb(245, 245, 245); */
+    background-color: var(--color-light);
+    color: var(--color-dark);
     transition: 0.5s;
 }
 [data-color="dark"]{
-    background-color: rgb(0, 0, 0);
-    color:white;
+    /* background-color: rgb(0, 0, 0); */
+    background-color: var(--color-dark);
+    color: var(--color-light);
     transition: 0.5s;
 }
 main{
     width:80%;
     height: auto;
     margin:auto;
-    margin-top:100px;
+    /* margin-top:100px; */
+    padding-top: 100px;
 }
 .container{
     margin-top:50px;
@@ -91,7 +96,7 @@ main{
     margin:50px;
     width:250px;
     height:250px;
-    background-color: black;
+    background-color: var(--color-dark);
     display:inline-block;
 }
 </style>

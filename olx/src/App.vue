@@ -6,6 +6,11 @@
   </div>
 </template>
 
+<style>
+  @import url('../static/css/reset.css');
+  @import url('../static/css/index.css');
+</style>
+
 <script>
 import Header from "./components/Header.vue"
 import Main from "./components/Main.vue"
