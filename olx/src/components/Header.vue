@@ -1,37 +1,19 @@
 <template>
     <header>
-        <!-- <div class="header-left">
-            <div class="logo">
-                <img src="../../static/icons/logo.svg" alt="s">
-            </div>
-            <Switch/>
-        </div>
-        <div class="header-right">
-            <div class="favorite">
-                <a href="#">ulubione</a>
-            </div>
-            <div class="account">
-                <a href="#">konto</a>
-            </div>
-            <div class="add">
-                <a href="#">dodaj ogłoszenie</a>
-            </div>
-        </div> -->
-
         <nav class="nav">
-            <div class="nav-logo">
+            <div class="nav-logo" @click="$store.dispatch('setTitlePage')">
                 <img class="filter-white" src="../../static/icons/logo-meetup.svg" alt="logo meetup">
             </div>
             <Switch/>
             <ul class="nav-menu">
                 <li class="menu-item">
-                    <a href="" class="menu-link">ulubione</a>
+                    <p class="menu-link">ulubione</p>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">konto</a>
+                    <p class="menu-link">konto</p>
                 </li>
                 <li class="menu-item">
-                    <a href="" class="menu-link">dodaj ogłoszenie</a>
+                    <p class="menu-link" @click="$store.dispatch('setAddNewOffert')">dodaj ogłoszenie</p>
                 </li>
             </ul>
         </nav>
