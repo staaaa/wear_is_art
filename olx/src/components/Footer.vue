@@ -12,9 +12,5 @@ export default {
 }
 </script>
 <style>
-footer{
-    width:100%;
-    height:200px;
-    display: flex;
-}
+
 </style>

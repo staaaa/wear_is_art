@@ -1,13 +1,13 @@
 <template>
-    <header>
-        <nav class="nav">
+    <nav class="nav">
+        <div class="header-left">
             <div class="nav-logo" @click="$store.dispatch('setTitlePage')">
                 <img class="filter-white" src="../../static/icons/logo-meetup.svg" alt="logo meetup">
             </div>
             <Switch/>
             <ul class="nav-menu">
                 <li class="menu-item">
-                    <p class="menu-link">ulubione</p>
+                    <p class="menu-link" @click="$store.dispatch('setFavourite')">ulubione</p>
                 </li>
                 <li class="menu-item">
                     <p class="menu-link">konto</p>
@@ -16,8 +16,11 @@
                     <p class="menu-link" @click="$store.dispatch('setAddNewOffert')">dodaj ogłoszenie</p>
                 </li>
             </ul>
-        </nav>
-    </header>
+        </div>
+        <div class="header-right" @click="$store.dispatch('setLoginForm')"   v-if="!$store.getters.getIsLogged">
+            <img src="../../static/icons/user-default.png" class="user-icon">
+        </div>
+    </nav>
 </template>
 
 <script>
@@ -30,8 +33,8 @@ export default {
 </script>
 
 <style>
-
-    header {
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@900&display=swap');
+    nav {
         display: flex;
         position:fixed;
         top:0;
@@ -43,7 +46,14 @@ export default {
         color:var(--color-light);
     }
 
-    /*
+    .user-icon{
+        width:50px;
+        height:50px;
+        position:absolute;
+        right:100px;
+        top:15px;
+    }
+
 
     .header-left{
         width:70%;
@@ -61,7 +71,6 @@ export default {
         height:50px;
         padding: 0 50px;
     }
-
     .favorite, .account, .add{
         width:33%;
     }
@@ -71,22 +80,15 @@ export default {
     .header-right .add a {
         color: var(--color-light);
         font-size: var(--font-size-xlg);
-        font-family: var(--font-body);
         font-weight: var(--font-weight-regular);
         font-style: normal;
         text-decoration: none;
         text-transform: uppercase;
     }
 
-    */
 
     .switch {
         margin: 24px 20px 0 0;
-    }
-
-    .nav {
-        display: inline-flex;
-        position: absolute;
     }
 
     .nav .nav-logo {
@@ -114,9 +116,9 @@ export default {
 
     .nav .nav-menu .menu-item .menu-link {
         color: var(--color-darkGrey);
-        font-size: var(--font-size-md);
-        font-family: var(--font-heading);
+        font-size: var(--font-size-xl);
         font-weight: var(--font-weight-regular);
+        font-family: 'Titillium Web', sans-serif;
         font-style: normal;
         text-decoration: none;
         text-transform: uppercase;
@@ -124,10 +126,13 @@ export default {
 
     .nav .nav-menu .menu-item:hover {
         transform: scale(1.1);
+        cursor: pointer;
     }
 
     .nav .nav-menu .menu-item .menu-link:hover {
         color: var(--color-light);
     }
-
+    img:hover{
+        cursor: pointer;
+    }
 </style>
