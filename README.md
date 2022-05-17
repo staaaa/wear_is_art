@@ -6,8 +6,9 @@ node version >=14.0.0
 #HOW TO RUN THE PROJECT
 
 1. Open the terminal in the 'OLX' folder
-2. Write 'npm run dev'
-3. The project should be hosted on your local port 3000
+2. Write npm install or npm i
+3. Write 'npm run dev'
+4. The project should be hosted on your local port 3000
 
 
 #WHAT TO DO IF IT DOESNT WORK
