@@ -1,5 +1,5 @@
 {
-  "name": "olx",
+  "name": "auctionstorefe",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -8,8 +8,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "vue": "^3.2.33",
-    "vuex": "^4.0.2"
+    "vue": "^3.2.33"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
