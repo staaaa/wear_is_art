@@ -37,6 +37,11 @@ export default {
 .left, .right{
     width:15%;
     height:auto;
+    margin-left:20px;
+    margin-right:20px;
+}
+.right{
+    text-align: right;
 }
 .center{
     width:70%;

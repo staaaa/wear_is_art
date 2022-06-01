@@ -2,15 +2,17 @@
     <div class="wrapper">
         <h2>WITAMY W AUCTION STORE</h2>
         <p>Zaloguj się, aby kontyunować.</p>
-        <form action="" @submit.prevent="">
-            <VInput class="input" type="text" placeholder="LOGIN" href="../../static/assets/icons/user-solid.svg"/>
-            <VInput class="input" type="password" placeholder="HASŁO" href="../../static/assets/icons/lock-solid.svg"/>
-            <p class="password-text">Zapomniałeś hasła?</p>
-            <VButton class="input submit" value="ZALOGUJ SIĘ"/>
-        </form>
-        <VLine class="input line"/>
-        <p class="subtext">NIE MASZ JESZCZE KONTA? ZAREJESTRUJ SIĘ TUTAJ</p>
-        <p class="subtext">POWRÓT NA STRONĘ GŁÓWNĄ</p>
+        <div class="form-wrapper">
+            <form action="" @submit.prevent="">
+                <VInput class="input" type="text" placeholder="LOGIN" href="../../static/assets/icons/user-solid.svg"/>
+                <VInput class="input" type="password" placeholder="HASŁO" href="../../static/assets/icons/lock-solid.svg"/>
+                <p class="password-text">Zapomniałeś hasła?</p>
+                <VButton class="input submit" value="ZALOGUJ SIĘ"/>
+            </form>
+            <VLine class="input line"/>
+            <p class="subtext">NIE MASZ JESZCZE KONTA? ZAREJESTRUJ SIĘ TUTAJ</p>
+            <p class="subtext">POWRÓT NA STRONĘ GŁÓWNĄ</p>
+        </div>
     </div>
 </template>
 <script>
@@ -26,6 +28,13 @@ export default {
 }
 </script>
 <style scoped>
+@media screen and (min-width: 600px){
+.form-wrapper{
+    width:600px;
+    margin:auto;
+}
+}
+
 h2{
     margin-top:20px;
 }
