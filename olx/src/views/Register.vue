@@ -1,6 +1,5 @@
 <template>
     <div class="wrapper">
-        <NavbarVue/>
         <h2>WITAMY W AUCTION STORE</h2>
         <p>Zarejestruj konto, aby korzystać z serwisu.</p>
         <div class="form-wrapper">
@@ -21,14 +20,12 @@
 import VInput from '../components/Input.vue'
 import VButton from '../components/Button.vue'
 import VLine from '../components/Line.vue'
-import NavbarVue from '../components/Navbar.vue'
 
 export default {
     components:{
         VInput,
         VButton,
         VLine,
-        NavbarVue,
     }
 }
 </script>

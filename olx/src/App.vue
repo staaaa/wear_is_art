@@ -1,18 +1,20 @@
 <template>
   <div class="wrapper">
-    <RegisterVue/>
+    <Home/>
   </div>
 </template>
 <script>
 import Home from './views/Home.vue'
 import LoginVue from './views/Login.vue'
 import RegisterVue from './views/Register.vue'
+import Menu from './components/Menu.vue'
 
 export default{
   components:{
     Home,
     LoginVue,
     RegisterVue,
+    Menu
   }
 }
 </script>

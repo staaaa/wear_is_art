@@ -2,13 +2,14 @@
     <div class="wrapper">
         <div class="navbar">
             <div class="left">
-                MENU
+                <img src="../../static/assets/icons/bars-solid.svg" alt="">
             </div>
             <div class="center">
                 <p>AUCTIONSTORE</p>
             </div>
             <div class="right">
-                <img src="../../static/assets/icons/user-solid.svg" alt="">
+                <VSwitch class="switch"/>
+                <span class="zaloguj">ZALOGUJ SIĘ</span>
             </div>
         </div>
         <VLine class="line"/>
@@ -16,9 +17,13 @@
 </template>
 <script>
 import VLine from './Line.vue'
+import VInput from './Input.vue'
+import VSwitch from './Switch.vue'
 export default {
     components:{
         VLine,
+        VInput,
+        VSwitch,
     }
 }
 </script>
@@ -35,16 +40,17 @@ export default {
     margin-top:10px;
 }
 .left, .right{
-    width:15%;
+    width:25%;
     height:auto;
     margin-left:20px;
     margin-right:20px;
 }
 .right{
     text-align: right;
+    display:flex;
 }
 .center{
-    width:70%;
+    width:50%;
     text-align:center;
 }
 .line{
@@ -54,5 +60,18 @@ export default {
 img{
     width:25px;
     height:25px;
+    cursor: pointer;
+}
+.switch{
+    margin-right:15px;
+    top:-3px;
+}
+.zaloguj{
+    margin-left:50px;
+}
+@media screen and (max-width: 1000px){
+    .zaloguj{
+        display:none;
+    }
 }
 </style>
