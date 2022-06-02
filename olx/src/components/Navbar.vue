@@ -37,7 +37,8 @@ export default {
     width:80%;
     margin-left:auto;
     margin-right: auto;
-    margin-top:10px;
+    margin-top:20px;
+    margin-bottom:10px;
 }
 .left, .right{
     width:25%;
