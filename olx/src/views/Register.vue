@@ -11,8 +11,12 @@
                 <VButton class="input submit" value="ZAREJESTRUJ KONTO"/>
             </form>
             <VLine class="input line"/>
-            <p class="subtext">MASZ JUŻ KONTO? ZALOGUJ SIĘ TUTAJ</p>
-            <p class="subtext">POWRÓT NA STRONĘ GŁÓWNĄ</p>
+            <router-link to="/login">
+                <p class="subtext">MASZ JUŻ KONTO? ZALOGUJ SIĘ TUTAJ</p>
+            </router-link>
+            <router-link to="/">
+                <p class="subtext second">POWRÓT NA STRONĘ GŁÓWNĄ</p>
+            </router-link>
         </div>
     </div>
 </template>
@@ -49,9 +53,6 @@ h2, p{
     margin-top:5px;
     font-size:0.75rem;
 }
-p:last-child {
-    text-decoration: 2px underline;
-}
 .input{
     margin-top:20px;
     margin-left:auto;
@@ -62,5 +63,8 @@ p:last-child {
 }
 .line{
     margin-bottom:25px;
+}
+.second{
+    text-decoration:underline;
 }
 </style>

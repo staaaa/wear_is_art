@@ -20,7 +20,9 @@
             <p class="menu-item">PODRÓBKAOLX@APP.COM</p>
         </div>
         <span class="close">
-            <img src="../../static/assets/icons/xmark-solid.svg">
+            <router-link to="/">
+                <img src="../../static/assets/icons/xmark-solid.svg">
+            </router-link>
         </span>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <Navbar/>
+        <!-- <div id="cursor"></div> -->
         <h2>Najciekawsze oferty</h2>
         <p>Promocje wybrane specjalnie dla Ciebie.</p>
         <div class="items">
@@ -16,6 +16,13 @@
             <div class="item">
                 <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
             </div>
+            <div class="item">
+                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+            </div>
+            <div class="item">
+                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+            </div>
+            
         </div>
     </div>
 </template>
@@ -28,6 +35,27 @@ export default {
         Navbar,
         RegisterVue,
         AuctionVue,
+    },
+    mounted(){
+        const cursor = document.querySelector("#cursor"),
+        logo = document.querySelector(".center");
+
+        document.addEventListener("mousemove", move => {
+        cursor.style.left = move.pageX + "px";
+        cursor.style.top = move.pageY + "px";
+        });
+
+        logo.addEventListener("mouseenter", () => {
+        cursor.style.width = "120px";
+        cursor.style.height = "120px";
+        cursor.style.transition = ".15s";
+        });
+
+        logo.addEventListener("mouseleave", () => {
+        cursor.style.width = "40px";
+        cursor.style.height = "40px";
+        cursor.style.transition = ".15s";
+        });
     }
 }
 </script>
@@ -68,10 +96,19 @@ h2, p{
         grid-template-columns: auto auto auto;
     }
 }
-@media screen and (min-width: 1400px){
+@media screen and (min-width: 1450px){
     .items{
         display:grid;
         grid-template-columns: auto auto auto auto;
     }
+}
+#cursor {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    border: 3px solid #101010;
+    z-index: 9999;
 }
 </style>

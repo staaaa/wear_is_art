@@ -10,8 +10,12 @@
                 <VButton class="input submit" value="ZALOGUJ SIĘ"/>
             </form>
             <VLine class="input line"/>
-            <p class="subtext">NIE MASZ JESZCZE KONTA? ZAREJESTRUJ SIĘ TUTAJ</p>
-            <p class="subtext">POWRÓT NA STRONĘ GŁÓWNĄ</p>
+            <router-link to="/register">
+                <p class="subtext">NIE MASZ JESZCZE KONTA? ZAREJESTRUJ SIĘ TUTAJ</p>
+            </router-link>
+            <router-link to="/">
+                <p class="subtext second">POWRÓT NA STRONĘ GŁÓWNĄ</p>
+            </router-link>
         </div>
     </div>
 </template>
@@ -47,9 +51,7 @@ h2, p{
 .subtext{
     margin-top:5px;
     font-size:0.75rem;
-}
-p:last-child {
-    text-decoration: 2px underline;
+    text-decoration: none;
 }
 .input{
     margin-top:20px;
@@ -65,5 +67,8 @@ p:last-child {
 .password-text{
     padding:15px 10% 0;
     text-align:right;
+}
+.second{
+    text-decoration: 2px underline;
 }
 </style>

@@ -2,14 +2,20 @@
     <div class="wrapper">
         <div class="navbar">
             <div class="left">
-                <img src="../../static/assets/icons/bars-solid.svg" alt="">
+                <router-link to="/menu">
+                    <img src="../../static/assets/icons/bars-solid.svg" alt="">
+                </router-link>
             </div>
             <div class="center">
-                <p>AUCTIONSTORE</p>
+                <router-link to="/">
+                    <p>AUCTIONSTORE</p>
+                </router-link>
             </div>
             <div class="right">
                 <VSwitch class="switch"/>
-                <span class="zaloguj">ZALOGUJ SIĘ</span>
+                <router-link to="/login">
+                    <span class="zaloguj">ZALOGUJ SIĘ</span>
+                </router-link>
             </div>
         </div>
         <VLine class="line"/>
@@ -69,6 +75,7 @@ img{
 }
 .zaloguj{
     margin-left:50px;
+    color:black;
 }
 @media screen and (max-width: 1000px){
     .zaloguj{

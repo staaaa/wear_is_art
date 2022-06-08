@@ -1,62 +1,45 @@
-<template>
-  <div class="wrapper">
-    <div id="cursor"></div>
-    <Home/>
-  </div>
-</template>
-<script>
-import Home from './views/Home.vue'
-import LoginVue from './views/Login.vue'
-import RegisterVue from './views/Register.vue'
-import Menu from './components/Menu.vue'
-
-export default{
-  mounted () {
-    const cursor = document.querySelector("#cursor"),
-          logo = document.querySelector(".center");
-
-    document.addEventListener("mousemove", move => {
-      cursor.style.left = move.pageX + "px";
-      cursor.style.top = move.pageY + "px";
-    });
-
-    logo.addEventListener("mouseenter", () => {
-      cursor.style.width = "120px";
-      cursor.style.height = "120px";
-      cursor.style.transition = ".15s";
-    });
-
-    logo.addEventListener("mouseleave", () => {
-      cursor.style.width = "40px";
-      cursor.style.height = "40px";
-      cursor.style.transition = ".15s";
-    });
-  },
-  components:{
-    Home,
-    LoginVue,
-    RegisterVue,
-    Menu,
-  },
-}
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+import Navbar from './components/Navbar.vue';
 </script>
+
+<template>
+<div>
+  <Navbar/>
+  <router-view v-slot="{ Component }">
+    <transition 
+    name="transition" 
+    mode="out-in">
+      <component :is="Component" />
+    </transition>
+  </router-view>
+</div>
+</template>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap');
-  *{
-    padding:0;
-    margin:0;
-    box-sizing: border-box;
-  }
-  .lock-svg{
-    color:white;
-  } 
-  #cursor {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    display: block;
-    border-radius: 50%;
-    border: 3px solid #101010;
-    z-index: 9999;
-  }
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+  text-decoration:none;
+}
+p{
+  color:black;
+}
+.lock-svg{
+  color:white;
+} 
+.router-link{
+  text-decoration: none;
+}
+.transition-enter-from,
+.transition-leave-to{
+  opacity: 0;
+  transform:translateX(100vh);
+}
+.transition-enter-active,
+.transition-leave-active{
+  transition: opacity 0.3s ease-out;
+}
 </style>
