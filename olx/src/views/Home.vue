@@ -5,24 +5,23 @@
         <p>Promocje wybrane specjalnie dla Ciebie.</p>
         <div class="items">
             <div class="item">
-                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+                <AuctionVue to="/product" src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
             </div>
             <div class="item">
-                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+                <AuctionVue to="/product" src="https://via.placeholder.com/300" name="Spodnie NIKE" price="199.99PLN"/>
             </div>
             <div class="item">
-                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+                <AuctionVue to="/product" src="https://via.placeholder.com/300" name="Buty NIKE" price="499.99PLN"/>
             </div>
             <div class="item">
-                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+                <AuctionVue to="/product" src="https://via.placeholder.com/300" name="Skarpetki NIKE" price="49.99PLN"/>
             </div>
             <div class="item">
-                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+                <AuctionVue to="/product" src="https://via.placeholder.com/300" name="Frotka NIKE" price="79.99PLN"/>
             </div>
             <div class="item">
-                <AuctionVue src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
+                <AuctionVue to="/product" src="https://via.placeholder.com/300" name="Rękawice NIKE" price="149.99PLN"/>
             </div>
-            
         </div>
     </div>
 </template>
@@ -37,25 +36,25 @@ export default {
         AuctionVue,
     },
     mounted(){
-        const cursor = document.querySelector("#cursor"),
-        logo = document.querySelector(".center");
+        // const cursor = document.querySelector("#cursor"),
+        // logo = document.querySelector(".center");
 
-        document.addEventListener("mousemove", move => {
-        cursor.style.left = move.pageX + "px";
-        cursor.style.top = move.pageY + "px";
-        });
+        // document.addEventListener("mousemove", move => {
+        // cursor.style.left = move.pageX + "px";
+        // cursor.style.top = move.pageY + "px";
+        // });
 
-        logo.addEventListener("mouseenter", () => {
-        cursor.style.width = "120px";
-        cursor.style.height = "120px";
-        cursor.style.transition = ".15s";
-        });
+        // logo.addEventListener("mouseenter", () => {
+        // cursor.style.width = "120px";
+        // cursor.style.height = "120px";
+        // cursor.style.transition = ".15s";
+        // });
 
-        logo.addEventListener("mouseleave", () => {
-        cursor.style.width = "40px";
-        cursor.style.height = "40px";
-        cursor.style.transition = ".15s";
-        });
+        // logo.addEventListener("mouseleave", () => {
+        // cursor.style.width = "40px";
+        // cursor.style.height = "40px";
+        // cursor.style.transition = ".15s";
+        // });
     }
 }
 </script>

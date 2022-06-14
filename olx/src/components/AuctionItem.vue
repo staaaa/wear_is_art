@@ -1,8 +1,10 @@
 <template>
     <div class="wrapper">
-        <img class="img" :src="src" alt="">
-        <p class="name">{{name}}</p>
-        <p class="price">{{price}}</p>
+        <router-link :to="to">
+            <img class="img" :src="src" alt="">
+            <p class="name">{{name}}</p>
+            <p class="price">{{price}}</p>
+        </router-link>
     </div>
 </template>
 <script>
@@ -11,6 +13,7 @@ export default {
         src:String,
         name:String,
         price:String,
+        to:String,
     }
 }
 </script>

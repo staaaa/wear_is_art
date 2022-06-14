@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Menu from '../views/Menu.vue'
 import Register from '../views/Register.vue'
+import Product from '../views/Product.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/menu',
       name: 'menu',
       component: Menu
+    },
+    {
+      path: '/product',
+      name: 'product',
+      component: Product
     },
   ]
 })
