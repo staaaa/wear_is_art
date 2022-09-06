@@ -14,6 +14,10 @@
             <p class="menu-item">ULUBIONE</p>
             <p class="menu-item">KONTO</p>
             <p class="menu-item">USTAWIENIA</p>
+            <span class="small">
+                <p class="subtext">KONTAKT Z NAMI</p>
+                <p class="menu-item">PODRÓBKAOLX@APP.COM</p>
+            </span>
         </div>
         <div class="contact">
             <p class="subtext">KONTAKT Z NAMI</p>
@@ -51,11 +55,22 @@ p{
 }
 .close{
     position:absolute;
-    top:5px;
-    right:50px;
-    width:18px;
-    height:18px;
+    top:80px;
+    right:15%;
+    width:25px;
+    height:25px;
     cursor:pointer;
+}
+.main{
+    position:absolute;
+    left:15%;
+    top:80px;
+}
+.small{
+    display:initial;
+}
+.contact{
+    display:none;
 }
 @media screen and (min-width:1000px) {
     p{
@@ -65,20 +80,13 @@ p{
         font-size:1.275rem;
     }
     .contact{
+        display:initial;
         position:absolute;
         bottom:265px;
         left:600px;
     }
-    .main{
-        position:absolute;
-        left:180px;
-        top:80px;
-    }
-    .close{
-        top:80px;
-        right:200px;
-        width:25px;
-        height:25px;
+    .small{
+        display:none;
     }
 }
 </style>

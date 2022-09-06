@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <h2>Nazwa produktu</h2>
+        <h2>{{getCurrentProductId}}</h2>
         <div class="middle">
             <img class="product-image" src="https://via.placeholder.com/450x450" alt="" srcset="">
             <div class="right">
@@ -19,10 +19,15 @@
 </template>
 <script>
 import VButton from '../components/Button.vue'
-
+import { mapGetters, mapActions } from 'vuex';
 export default {
+    computed:{
+        ...mapGetters([
+            'getCurrentProductId',
+        ])
+    },
     components:{
-      VButton,  
+      VButton,
     },
     props:{
         title:String,

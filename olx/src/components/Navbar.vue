@@ -8,7 +8,7 @@
             </div>
             <div class="center">
                 <router-link to="/">
-                    <p>AUCTIONSTORE</p>
+                    <p>WEAR IS ART?</p>
                 </router-link>
             </div>
             <div class="right">
@@ -47,7 +47,7 @@ export default {
     margin-bottom:10px;
 }
 .left, .right{
-    width:25%;
+    width:30%;
     height:auto;
     margin-left:20px;
     margin-right:20px;
@@ -55,9 +55,10 @@ export default {
 .right{
     text-align: right;
     display:flex;
+    justify-content: right;
 }
 .center{
-    width:50%;
+    width:40%;
     text-align:center;
 }
 .line{
@@ -70,14 +71,21 @@ img{
     cursor: pointer;
 }
 .switch{
-    margin-right:15px;
     top:-3px;
+    margin-right:15px;
 }
 .zaloguj{
-    margin-left:50px;
     color:black;
+    font-size:0.9rem;
+    text-align: right;
+    min-width:300px;
 }
 @media screen and (max-width: 1000px){
+    .zaloguj{
+        font-size:0.75rem;
+    }
+}
+@media screen and (max-width: 650px){
     .zaloguj{
         display:none;
     }

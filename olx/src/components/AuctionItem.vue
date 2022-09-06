@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" @click="setProductId">
         <router-link :to="to">
             <img class="img" :src="src" alt="">
             <p class="name">{{name}}</p>
@@ -8,12 +8,23 @@
     </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
 export default {
     props:{
         src:String,
         name:String,
         price:String,
         to:String,
+        productId:String,
+    },
+    methods:{
+        ...mapActions([
+            'setCurrentProductId'
+        ]),
+        setProductId()
+        {
+            this.setCurrentProductId(this.productId);
+        }
     }
 }
 </script>

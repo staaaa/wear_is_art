@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <h2>WITAMY W AUCTION STORE</h2>
+        <h2>WITAMY W WEAR IS ART</h2>
         <p>Zaloguj się, aby kontyunować.</p>
         <div class="form-wrapper">
             <form action="" @submit.prevent="">

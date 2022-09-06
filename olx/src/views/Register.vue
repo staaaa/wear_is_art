@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
-        <h2>WITAMY W AUCTION STORE</h2>
-        <p>Zarejestruj konto, aby korzystać z serwisu.</p>
+        <h2>WITAMY W WEAR IS ART</h2>
+        <p>Zarejestruj się, aby móc wygodniej korzystać z serwisu.</p>
         <div class="form-wrapper">
             <form action="" @submit.prevent="">
                 <VInput class="input" type="text" placeholder="PODAJ EMAIL" href="../../static/assets/icons/at-solid.svg"/>

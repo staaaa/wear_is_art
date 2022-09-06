@@ -1,8 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import Navbar from './components/Navbar.vue';
-</script>
-
 <template>
 <div>
   <Navbar/>
@@ -15,7 +10,10 @@ import Navbar from './components/Navbar.vue';
   </router-view>
 </div>
 </template>
-
+<script setup>
+  import { RouterLink, RouterView } from 'vue-router'
+  import Navbar from './components/Navbar.vue';
+</script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap');
 *{
