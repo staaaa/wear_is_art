@@ -12,12 +12,12 @@
             <p class="menu-item">USTAWIENIA</p>
             <span class="small">
                 <p class="subtext">KONTAKT Z NAMI</p>
-                <p class="menu-item">maniekkoks@gmail.com</p>
+                <p class="menu-item">maniek_koks@gmail.com</p>
             </span>
         </div>
         <div class="contact">
             <p class="subtext">KONTAKT Z NAMI</p>
-            <p class="menu-item">maniekkoks@gmail.com</p>
+            <p class="menu-item">maniek_koks@gmail.com</p>
         </div>
         <span class="close">
             <router-link to="/">

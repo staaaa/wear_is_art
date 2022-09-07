@@ -16,6 +16,9 @@
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap');
+::-webkit-scrollbar{
+  display:none;
+}
 *{
   padding:0;
   margin:0;
