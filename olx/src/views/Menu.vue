@@ -3,25 +3,21 @@
         <div class="main">
             <p class="header">MENU</p>
             <p class="subtext">KATEGORIE</p>
-            <p class="menu-item">ELEKTRONIKA</p>
-            <p class="menu-item">DOM I OGRÓD</p>
-            <p class="menu-item">URODA</p>
-            <p class="menu-item">MOTORYZACJA</p>
-            <p class="menu-item">NAUKA I TECHNOLOGIA</p>
-            <p class="menu-item">ROZRYWKA</p>
-            <p class="menu-item">SPORT</p>
+            <router-link to="/">
+                <p class="menu-item">T-SHIRTY</p>
+            </router-link>
             <p class="subtext">KONTO</p>
             <p class="menu-item">ULUBIONE</p>
             <p class="menu-item">KONTO</p>
             <p class="menu-item">USTAWIENIA</p>
             <span class="small">
                 <p class="subtext">KONTAKT Z NAMI</p>
-                <p class="menu-item">PODRÓBKAOLX@APP.COM</p>
+                <p class="menu-item">maniekkoks@gmail.com</p>
             </span>
         </div>
         <div class="contact">
             <p class="subtext">KONTAKT Z NAMI</p>
-            <p class="menu-item">PODRÓBKAOLX@APP.COM</p>
+            <p class="menu-item">maniekkoks@gmail.com</p>
         </div>
         <span class="close">
             <router-link to="/">

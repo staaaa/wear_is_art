@@ -7,7 +7,9 @@
                     <p>PRODUKTY</p>
                 </div>
                 <div class="row">
-                    <p>T-SHIRTY</p>
+                    <router-link to="/">
+                        <p>T-SHIRTY</p>
+                    </router-link>
                 </div>
             </div>
             <div class="section">

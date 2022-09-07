@@ -1,12 +1,12 @@
 <template>
     <div class="wrapper">
-        <h2>{{getCurrentProductId}}</h2>
+        <h2>{{product.name}}</h2>
         <div class="middle">
-            <img class="product-image" src="https://via.placeholder.com/450x450" alt="" srcset="">
+            <img class="product-image" :src="product.src" alt="" srcset="">
             <div class="right">
-                <p class="price">000.00PLN</p>
+                <p class="price">{{product.price}}PLN</p>
                 <p class="description">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odit atque deserunt dolorum harum, officia asperiores sapiente obcaecati ullam tempora alias natus ex nesciunt veniam accusantium expedita laudantium hic, minima neque!
+                    {{product.desc}}
                 </p>
                 <div class="buttons">
                     <VButton class="button" value="KUP"/>
@@ -23,17 +23,20 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
     computed:{
         ...mapGetters([
-            'getCurrentProductId',
+            'getProducts',
         ])
     },
+    data(){
+        return{
+            product: Object
+        }
+    },
+    mounted(){
+        this.product = this.getProducts[this.$route.params.productId];
+    },  
     components:{
       VButton,
     },
-    props:{
-        title:String,
-        price:String,
-        imgsrc:String,
-    }
 }
 </script>
 <style scoped>

@@ -1,26 +1,10 @@
 <template>
     <div class="wrapper">
-        <!-- <div id="cursor"></div> -->
-        <h2>Najciekawsze oferty</h2>
-        <p>Promocje wybrane specjalnie dla Ciebie.</p>
+        <h2>T-SHIRTY</h2>
+        <p>Najlepsze t-shirty specjalnie dla Ciebie.</p>
         <div class="items">
-            <div class="item">
-                <AuctionVue to="/product" productId="Bluza NIKE" src="https://via.placeholder.com/300" name="Bluza NIKE" price="299.99PLN"/>
-            </div>
-            <div class="item">
-                <AuctionVue to="/product" productId="Spodnie NIKE" src="https://via.placeholder.com/300" name="Spodnie NIKE" price="199.99PLN"/>
-            </div>
-            <div class="item">
-                <AuctionVue to="/product" productId="Buty NIKE" src="https://via.placeholder.com/300" name="Buty NIKE" price="499.99PLN"/>
-            </div>
-            <div class="item">
-                <AuctionVue to="/product" productId="Skarpetki NIKE" src="https://via.placeholder.com/300" name="Skarpetki NIKE" price="49.99PLN"/>
-            </div>
-            <div class="item">
-                <AuctionVue to="/product" productId="Frotka NIKE" src="https://via.placeholder.com/300" name="Frotka NIKE" price="79.99PLN"/>
-            </div>
-            <div class="item">
-                <AuctionVue to="/product" productId="Rękawice NIKE" src="https://via.placeholder.com/300" name="Rękawice NIKE" price="149.99PLN"/>
+            <div class="item" v-for="item in products" v-bind:key="item">
+                <AuctionVue :to="item.id" :src="item.src" :name="item.name" :price="item.price"/>
             </div>
         </div>
         <Footer/>
@@ -31,33 +15,27 @@ import Navbar from '../components/Navbar.vue'
 import RegisterVue from './Register.vue'
 import AuctionVue from '../components/AuctionItem.vue'
 import Footer from '../components/Footer.vue'
+
+import { mapGetters } from 'vuex'
 export default {
+    computed: {
+        ...mapGetters([
+            'getProducts',
+        ])
+    },
     components:{
         Navbar,
         RegisterVue,
         AuctionVue,
         Footer,
     },
+    data(){
+        return{
+            products: Array
+        }
+    },
     mounted(){
-        // const cursor = document.querySelector("#cursor"),
-        // logo = document.querySelector(".center");
-
-        // document.addEventListener("mousemove", move => {
-        // cursor.style.left = move.pageX + "px";
-        // cursor.style.top = move.pageY + "px";
-        // });
-
-        // logo.addEventListener("mouseenter", () => {
-        // cursor.style.width = "120px";
-        // cursor.style.height = "120px";
-        // cursor.style.transition = ".15s";
-        // });
-
-        // logo.addEventListener("mouseleave", () => {
-        // cursor.style.width = "40px";
-        // cursor.style.height = "40px";
-        // cursor.style.transition = ".15s";
-        // });
+        this.products = this.getProducts
     }
 }
 </script>
