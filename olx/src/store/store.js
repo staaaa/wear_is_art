@@ -67,18 +67,31 @@ const store = createStore({
                     status: "W realizacji"
                 }
             ],
+            isLogged: false,
         }
     },
     //mutacje
     mutations: {
         SET_PRODUCTS(state, payload) {
             state.products = payload
-        }
+        },
+        SET_ORDERS(state, payload) {
+            state.orders = payload
+        },
+        SET_IS_LOGGED(state, payload) {
+            state.isLogged = payload
+        },
     },
     //actions
     actions: {
         setProducts(context, payload) {
             context.commit('SET_PRODUCTS', payload)
+        },
+        setOrders(context, payload) {
+            context.commit('SET_ORDERS', payload)
+        },
+        setIsLogged(context, payload) {
+            context.commit('SET_IS_LOGGED', payload)
         }
     },
     //getters
@@ -88,6 +101,9 @@ const store = createStore({
         },
         getOrders (state) {
             return state.orders
+        },
+        getIsLogged(state){
+            return state.isLogged
         }
     }
 })

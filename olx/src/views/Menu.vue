@@ -8,8 +8,9 @@
                 <p class="menu-item">T-SHIRTY</p>
             </router-link>
             <p class="subtext">KONTO</p>
-            <p class="menu-item">ULUBIONE</p>
-            <p class="menu-item">KONTO</p>
+            <router-link to="/account">
+                <p class="menu-item">KONTO</p>
+            </router-link>
             <p class="menu-item">USTAWIENIA</p>
             <span class="small">
                 <p class="subtext">KONTAKT Z NAMI</p>

@@ -12,9 +12,13 @@
                 </router-link>
             </div>
             <div class="right">
-                <VSwitch class="switch"/>
-                <router-link to="/login">
-                    <span class="zaloguj">ZALOGUJ SIĘ</span>
+                <router-link v-if="!getIsLogged" to="/login">
+                    <span class="login">ZALOGUJ SIĘ</span>
+                    <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
+                </router-link>
+                <router-link v-if="getIsLogged" to="/account">
+                    <span class="login">KONTO</span>
+                    <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
                 </router-link>
             </div>
         </div>
@@ -24,12 +28,16 @@
 <script>
 import VLine from './Line.vue'
 import VInput from './Input.vue'
-import VSwitch from './Switch.vue'
+import { mapGetters } from 'vuex';
 export default {
     components:{
         VLine,
         VInput,
-        VSwitch,
+    },
+    computed:{
+        ...mapGetters([
+            'getIsLogged',
+        ])
     }
 }
 </script>
@@ -70,23 +78,23 @@ img{
     height:25px;
     cursor: pointer;
 }
-.switch{
-    top:-3px;
-    margin-right:15px;
-}
-.zaloguj{
+.login{
     color:black;
     font-size:0.9rem;
     text-align: right;
     min-width:300px;
+    padding-right:10px;
+}
+.acc-img{
+    padding-top:5px;
 }
 @media screen and (max-width: 1000px){
-    .zaloguj{
+    .login{
         font-size:0.75rem;
     }
 }
 @media screen and (max-width: 650px){
-    .zaloguj{
+    .login{
         display:none;
     }
 }

@@ -8,7 +8,7 @@
                 <VInput class="input" type="text" placeholder="LOGIN" href="../../static/assets/icons/user-solid.svg"/>
                 <VInput class="input" type="password" placeholder="HASŁO" href="../../static/assets/icons/lock-solid.svg"/>
                 <p class="password-text">Zapomniałeś hasła?</p>
-                <VButton class="input submit" value="ZALOGUJ SIĘ"/>
+                <VButton class="input submit" value="ZALOGUJ SIĘ" @click="login"/>
             </form>
             <VLine class="input line"/>
             <router-link to="/register">
@@ -25,12 +25,23 @@ import VInput from '../components/Input.vue'
 import VButton from '../components/Button.vue'
 import VLine from '../components/Line.vue'
 import Navbar from '../components/Navbar.vue';
+import { mapGetters, mapActions } from 'vuex';
+import router from '../router';
+
 export default {
     components:{
         VInput,
         VButton,
         VLine,
         Navbar,
+    },
+    methods:{
+        ...mapActions(['setIsLogged']),
+        login(){
+            //if request z danymi zwraca true wtedy zaloguj
+            this.setIsLogged(true);
+            router.push('/');
+        }
     }
 }
 </script>
