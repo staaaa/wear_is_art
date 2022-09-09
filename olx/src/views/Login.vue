@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <Navbar/>
         <h2>WITAMY W WEAR IS ART</h2>
         <p>Zaloguj się, aby kontyunować.</p>
         <div class="form-wrapper">
@@ -23,11 +24,13 @@
 import VInput from '../components/Input.vue'
 import VButton from '../components/Button.vue'
 import VLine from '../components/Line.vue'
+import Navbar from '../components/Navbar.vue';
 export default {
     components:{
         VInput,
         VButton,
         VLine,
+        Navbar,
     }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <Navbar/>
         <h2>T-SHIRTY</h2>
         <p>Najlepsze t-shirty specjalnie dla Ciebie.</p>
         <div class="items">

@@ -13,7 +13,7 @@ export default {
         src:String,
         name:String,
         price:String,
-        to:String,
+        to:Number,
     },
 }
 </script>

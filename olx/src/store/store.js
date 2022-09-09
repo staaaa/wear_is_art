@@ -1,4 +1,3 @@
-import { createApp } from 'vue'
 import { createStore } from 'vuex'
 
 const store = createStore({
@@ -6,14 +5,68 @@ const store = createStore({
     state () {
         return {
             //WCZYTYWANE Z BAZY DANYCH
-            products: [
-                { id: 0, name: 'bluza nike', price: '299.99', src: 'https://via.placeholder.com/300', desc: 'przykladowy opis'},
-                { id: 1, name: 'spodnie nike', price: '99.99', src: 'https://via.placeholder.com/300', desc: 'przykladowy opis'},
-                { id: 2, name: 'koszulka nike', price: '2399.99', src: 'https://via.placeholder.com/300', desc: 'przykladowy opis' },
-                { id: 3, name: 'buty nike', price: '49.99', src: 'https://via.placeholder.com/300', desc: 'przykladowy opis' },
-                { id: 4, name: 'czapka nike', price: '599.99', src: 'https://via.placeholder.com/300', desc: 'przykladowy opis' },
-                { id: 5, name: 'skarpetki nike', price: '9.99', src: 'https://via.placeholder.com/300', desc: 'przykladowy opis' },
-            ]
+            products:
+            [
+                {id: 0, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 20, size: "XL"},
+                {id: 1, name: "T-SHIRT BIAŁY L", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 10, size: "L"},
+                {id: 2, name: "T-SHIRT CZARNY M", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 3, name: "T-SHIRT BIAŁY M", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 4, name: "T-SHIRT CZARNY XL", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 5, name: "T-SHIRT CZARNY L", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+            ],
+            orders: [
+                {
+                    id: 0,
+                    orderCode: "KSJ)@431Nd",
+                    user: {
+                        id: 2,
+                        name: "konrad",
+                        surname: "wandtke",
+                        email: "koWandtke@kutas.com",
+                        city: "aChujCieTo",
+                        zipCode: "69-420",
+                        street: "cwelowa",
+                        buildingNumber: "7",
+                        flatNumber: "",
+                        country: "Pizdowo"
+                    },
+                    status: "Opłacone"
+                },
+                {
+                    id: 1,
+                    orderCode: "KJHJ234",
+                    user: {
+                        id: 3,
+                        name: "Kewin",
+                        surname: "wandtke",
+                        email: "koWandtke@kutas.com",
+                        city: "aChujCieTo",
+                        zipCode: "69-420",
+                        street: "cwelowa",
+                        buildingNumber: "7",
+                        flatNumber: "",
+                        country: "Pizdowo"
+                    },
+                    status: "Wysłane"
+                },
+                {
+                    id: 2,
+                    orderCode: "MSJ143DSd",
+                    user: {
+                        id: 4,
+                        name: "Mateusz",
+                        surname: "wandtke",
+                        email: "koWandtke@kutas.com",
+                        city: "aChujCieTo",
+                        zipCode: "69-420",
+                        street: "cwelowa",
+                        buildingNumber: "7",
+                        flatNumber: "",
+                        country: "Pizdowo"
+                    },
+                    status: "W realizacji"
+                }
+            ],
         }
     },
     //mutacje
@@ -32,6 +85,9 @@ const store = createStore({
     getters: {
         getProducts (state) {
             return state.products
+        },
+        getOrders (state) {
+            return state.orders
         }
     }
 })

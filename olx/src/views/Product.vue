@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <Navbar/>
         <h2>{{product.name}}</h2>
         <div class="middle">
             <img class="product-image" :src="product.src" alt="" srcset="">
@@ -19,6 +20,7 @@
 </template>
 <script>
 import VButton from '../components/Button.vue'
+import Navbar from '../components/Navbar.vue';
 import { mapGetters, mapActions } from 'vuex';
 export default {
     computed:{
@@ -36,6 +38,7 @@ export default {
     },  
     components:{
       VButton,
+      Navbar,
     },
 }
 </script>

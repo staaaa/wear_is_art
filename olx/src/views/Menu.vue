@@ -1,5 +1,6 @@
 <template>
     <div class="wrapper">
+        <Navbar/>
         <div class="main">
             <p class="header">MENU</p>
             <p class="subtext">KATEGORIE</p>
@@ -27,7 +28,13 @@
     </div>
 </template>
 <script>
+import Navbar from '../components/Navbar.vue';
 
+export default{
+    components:{
+        Navbar,
+    }
+}
 </script>
 <style scoped>
 p{

@@ -55,12 +55,14 @@ export default {
     margin-top:20px;
     margin-bottom:30px;
     justify-content: space-between;
+    flex-direction: column;
 }
 .section{
-    width:33%;
+    width:100%;
     display:flex;
     justify-content: start;
     flex-direction: column;
+    margin-bottom:20px;
 }
 .row{
     display:flex;
@@ -74,5 +76,14 @@ p{
 }
 .title{
     font-weight: 700;
+}
+@media screen and (min-width: 600px) {
+    .wrapper{
+        flex-direction: row;
+    }
+    .section{
+        width:33%;
+        margin-bottom:0;
+    }
 }
 </style>
