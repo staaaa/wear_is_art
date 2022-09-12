@@ -4,7 +4,7 @@ const store = createStore({
     //state
     state () {
         return {
-            //WCZYTYWANE Z BAZY DANYCH
+            //WCZYTYWANE Z BAZY DANYCH - DANE TYLKO O UZYTKOWNIKU - JEGO DANE, JEGO ZAMOWIENIA + ogolne produkty
             products:
             [
                 {id: 0, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 20, size: "XL"},
@@ -14,58 +14,35 @@ const store = createStore({
                 {id: 4, name: "T-SHIRT CZARNY XL", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
                 {id: 5, name: "T-SHIRT CZARNY L", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
             ],
+            user:
+            [
+                {id: 0, login: 'kwDebil123', name: "Konrad", surname: "Wandtke", password: "xxxxxx", email: 'kondi@wp.pl', phone: '+48694202137', city: "Mrzezino", zipCode: "84-123", street: 'Lipowa', buildingNumber: "7", flatNumber: null, country: "Polska"}
+            ],
             orders: [
                 {
                     id: 0,
-                    orderCode: "KSJ)@431Nd",
-                    user: {
-                        id: 2,
-                        name: "konrad",
-                        surname: "wandtke",
-                        email: "koWandtke@kutas.com",
-                        city: "aChujCieTo",
-                        zipCode: "69-420",
-                        street: "cwelowa",
-                        buildingNumber: "7",
-                        flatNumber: "",
-                        country: "Pizdowo"
-                    },
+                    userId: 0,
+                    orderCode: "0001",
+                    date: "21-12-2001",
+                    products: [
+                        {id: 0, name: "T-SHIRT BIAŁY XL", price: "109.99", quantity: 1},
+                        {id: 1, name: "T-SHIRT BIAŁY L", price: "109.99", quantity: 1}
+                    ],
+                    price: '219,98',
                     status: "Opłacone"
                 },
                 {
                     id: 1,
-                    orderCode: "KJHJ234",
-                    user: {
-                        id: 3,
-                        name: "Kewin",
-                        surname: "wandtke",
-                        email: "koWandtke@kutas.com",
-                        city: "aChujCieTo",
-                        zipCode: "69-420",
-                        street: "cwelowa",
-                        buildingNumber: "7",
-                        flatNumber: "",
-                        country: "Pizdowo"
-                    },
-                    status: "Wysłane"
-                },
-                {
-                    id: 2,
-                    orderCode: "MSJ143DSd",
-                    user: {
-                        id: 4,
-                        name: "Mateusz",
-                        surname: "wandtke",
-                        email: "koWandtke@kutas.com",
-                        city: "aChujCieTo",
-                        zipCode: "69-420",
-                        street: "cwelowa",
-                        buildingNumber: "7",
-                        flatNumber: "",
-                        country: "Pizdowo"
-                    },
+                    userId: 0,
+                    orderCode: "0002",
+                    date: "23-12-2001",
+                    products: [
+                        {id: 0, name: "T-SHIRT BIAŁY XL", price: "109.99", quantity: 1},
+                        {id: 1, name: "T-SHIRT BIAŁY L", price: "109.99", quantity: 1}
+                    ],
+                    price: '219,98',
                     status: "W realizacji"
-                }
+                },
             ],
             isLogged: false,
         }
@@ -81,6 +58,9 @@ const store = createStore({
         SET_IS_LOGGED(state, payload) {
             state.isLogged = payload
         },
+        SET_USER(state, payload){
+            state.user = payload
+        }
     },
     //actions
     actions: {
@@ -92,6 +72,9 @@ const store = createStore({
         },
         setIsLogged(context, payload) {
             context.commit('SET_IS_LOGGED', payload)
+        },
+        setUser(context, payload){
+            context.commit('SET_USER', payload)
         }
     },
     //getters
@@ -104,6 +87,9 @@ const store = createStore({
         },
         getIsLogged(state){
             return state.isLogged
+        },
+        getUser(state){
+            return state.user
         }
     }
 })

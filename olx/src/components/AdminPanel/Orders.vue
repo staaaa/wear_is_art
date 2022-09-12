@@ -4,8 +4,9 @@
             <tr>
                 <th>ID</th>
                 <th>NR ZAMÓWIENIA</th>
-                <th>DANE ZAMAWIAJĄCEGO</th>
-                <th>STATUS ZAMOWIENIA</th>
+                <th>DANE</th>
+                <th>CENA</th>
+                <th>STATUS</th>
             </tr>
         </table>
     </div>
@@ -19,6 +20,8 @@ export default {
         ])
     },
     mounted(){
+        //W TYM MIEJSCU ZAPYTANIE DO BAZY I POBRANIE CAŁEJ LISTY ORDEROW A NIE TYCH ZE STORA
+        //TE ZE STORA TO TYLKO OBECNEGO UZYTKOWNIKA!!!
         let orders = this.getOrders
         let table = document.querySelector(".tableOrders");
         let rows = 1;
@@ -31,11 +34,13 @@ export default {
             let cell2 = row.insertCell();
             let cell3 = row.insertCell();
             let cell4 = row.insertCell();
+            let cell5 = row.insertCell();
 
             cell1.appendChild(document.createTextNode(orders[i].id));
             cell2.appendChild(document.createTextNode(orders[i].orderCode));
-            cell3.appendChild(document.createTextNode(orders[i].user.name));
-            cell4.appendChild(document.createTextNode(orders[i].status));
+            cell3.appendChild(document.createTextNode(orders[i].userId));
+            cell4.appendChild(document.createTextNode(orders[i].price))
+            cell5.appendChild(document.createTextNode(orders[i].status));
             rows++;
         }
     }
@@ -43,7 +48,7 @@ export default {
 </script>
 <style scoped>
 table{
-    width:80%;
+    width:90%;
     margin-left:auto;
     margin-right:auto;
     margin-top:50px;
@@ -55,7 +60,7 @@ tr{
     border: 0.5rem solid transparent;
 }
 th{
-    width:25%;
+    width:20%;
     border: 0.1rem solid black;
     border-radius:10px;
     padding-left:10px;
