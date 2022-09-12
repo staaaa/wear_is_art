@@ -4,7 +4,7 @@
         <div class="main">
             <p class="header">MENU</p>
             <p class="subtext">KATEGORIE</p>
-            <router-link to="/">
+            <router-link to="/t-shirt">
                 <p class="menu-item">T-SHIRTY</p>
             </router-link>
             <p class="subtext">KONTO</p>

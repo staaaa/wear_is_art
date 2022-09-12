@@ -7,9 +7,11 @@
             <form action="" @submit.prevent="">
                 <VInput class="input" type="text" placeholder="PODAJ EMAIL" href="../../static/assets/icons/at-solid.svg"/>
                 <VInput class="input" type="text" placeholder="PODAJ NAZWE UŻYTKOWNIKA" href="../../static/assets/icons/user-solid.svg"/>
+                <VInput class="input" type="text" placeholder="PODAJ IMIĘ" href="../../static/assets/icons/user-solid.svg"/>
+                <VInput class="input" type="text" placeholder="PODAJ NAZWISKO" href="../../static/assets/icons/user-solid.svg"/>
                 <VInput class="input" type="password" placeholder="PODAJ HASŁO" href="../../static/assets/icons/lock-solid.svg"/>
                 <VInput class="input" type="password" placeholder="POTWIERDŹ HASŁO" href="../../static/assets/icons/lock-solid.svg"/>
-                <VButton class="input submit" value="ZAREJESTRUJ KONTO"/>
+                <VButton class="input submit" value="ZAREJESTRUJ KONTO" @click="register"/>
             </form>
             <VLine class="input line"/>
             <router-link to="/login">
@@ -26,6 +28,7 @@ import VInput from '../components/Input.vue'
 import VButton from '../components/Button.vue'
 import VLine from '../components/Line.vue'
 import Navbar from '../components/Navbar.vue';
+import router from '../router';
 
 export default {
     components:{
@@ -33,6 +36,13 @@ export default {
         VButton,
         VLine,
         Navbar,
+    },
+    methods:{
+        register(){
+            //WYSYLA REQUEST DO API, SPRAWDZA CZY REQUEST PRZECHODZI, JESLI GIT LOGUJE NA NOWE KONTO
+            //JESLI NIE GIT WYSWIETLA STOSOWNA INFORMACJE
+            router.push('/')
+        }
     }
 }
 </script>

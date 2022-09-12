@@ -12,10 +12,10 @@
     </div>
 </template>
 <script>
-import Navbar from '../components/Navbar.vue'
-import RegisterVue from './Register.vue'
-import AuctionVue from '../components/AuctionItem.vue'
-import Footer from '../components/Footer.vue'
+import Navbar from '../../components/Navbar.vue'
+import RegisterVue from '../Register.vue'
+import AuctionVue from '../../components/AuctionItem.vue'
+import Footer from '../../components/Footer.vue'
 
 import { mapGetters } from 'vuex'
 export default {

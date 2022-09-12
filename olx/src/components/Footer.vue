@@ -7,7 +7,7 @@
                     <p>PRODUKTY</p>
                 </div>
                 <div class="row">
-                    <router-link to="/">
+                    <router-link to="/t-shirt">
                         <p>T-SHIRTY</p>
                     </router-link>
                 </div>

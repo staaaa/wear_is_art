@@ -13,8 +13,10 @@
             </div>
             <div class="right">
                 <router-link v-if="!getIsLogged" to="/login">
-                    <span class="login">ZALOGUJ SIĘ</span>
-                    <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
+                    <div>
+                        <span class="login">ZALOGUJ SIĘ</span>
+                        <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
+                    </div>
                 </router-link>
                 <router-link v-if="getIsLogged" to="/account">
                     <span class="login">KONTO</span>
@@ -53,6 +55,11 @@ export default {
     margin-right: auto;
     margin-top:20px;
     margin-bottom:10px;
+    justify-content: space-around;
+}
+.center{
+    width:40%;
+    text-align:center;
 }
 .left, .right{
     width:30%;
@@ -64,10 +71,6 @@ export default {
     text-align: right;
     display:flex;
     justify-content: right;
-}
-.center{
-    width:40%;
-    text-align:center;
 }
 .line{
     margin-left:auto;
@@ -84,9 +87,10 @@ img{
     text-align: right;
     min-width:300px;
     padding-right:10px;
+    vertical-align: top;
 }
 .acc-img{
-    padding-top:5px;
+    padding-bottom:7px;
 }
 @media screen and (max-width: 1000px){
     .login{
