@@ -5,7 +5,6 @@
             <div class="row">
                 <div class="column">
                     <p class="title">WITAMY NA STRONIE WEAR IS ART?</p>
-                    <Line class="linia"/>
                 </div>
             </div>
             <div class="row">
