@@ -9,15 +9,39 @@
                 <th>STATUS</th>
             </tr>
         </table>
+        <div class="changeStatus">
+            <p>ZMIEŃ STATUS</p>
+            <div class="inputs">
+                <p>ID:</p>
+                <input type="number" class="id">
+                <p>STATUS:</p>
+                <select class="status">
+                    <option value="1">OPŁACONE</option>
+                    <option value="2">W REALIZACJI</option>
+                    <option value="3">WYSŁANO</option>
+                    <option value="4">DOSTARCZONO</option>
+                </select>
+                <VButton class="button" value="ZMIEŃ STATUS" @click="changeStatus"/>
+            </div>
+        </div>
     </div>
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import VButton from '../Button.vue';
 export default {
+    components:{
+        VButton,
+    },
     computed:{
         ...mapGetters([
             'getOrders',
         ])
+    },
+    methods:{
+        changeStatus(){
+            //zapytanie do bazy danych i zmiana statusu
+        },
     },
     mounted(){
         //W TYM MIEJSCU ZAPYTANIE DO BAZY I POBRANIE CAŁEJ LISTY ORDEROW A NIE TYCH ZE STORA
@@ -66,5 +90,24 @@ th{
     padding-left:10px;
     padding-right:10px;
     background-color:rgb(232, 232, 232);
+}
+.id{
+    font-size:1rem;
+    border-radius:10px;
+    border: 0.1rem solid black;
+    padding: 0 5px;
+}
+.status{
+    font-family:'Red Hat Display';
+}
+.changeStatus{
+    width:90%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:30px;
+}
+.button{
+    width:190px;
+    margin:20px 10px;
 }
 </style>

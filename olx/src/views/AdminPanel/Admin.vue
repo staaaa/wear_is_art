@@ -12,12 +12,9 @@
             <div class="section" @click="showProducts">
                 <p>PRODUKTY</p>
             </div>
-            <div class="section" @click="showAdminPanel">
-                <p>PANEL ADMINISTRATORA</p>
-            </div>
         </div>
         <Line class="line"/>
-        <Orders class="dontShowOrders"/>
+        <Orders class="showOrders"/>
         <Products class="dontShowProducts"/>
     </div>
 </template>
@@ -38,7 +35,7 @@ export default {
     data(){
         return{
             adminHomePageVisible: true,
-            ordersVisible: false,
+            ordersVisible: true,
             productsVisible: false,
         }
     },
@@ -103,7 +100,7 @@ export default {
     font-size:1.2rem;
 }
 .section{
-    width:25%;
+    width:33%;
     text-align: center;
     display:flex;
     justify-content: center;
