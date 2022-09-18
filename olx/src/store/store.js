@@ -7,12 +7,12 @@ const store = createStore({
             //WCZYTYWANE Z BAZY DANYCH - DANE TYLKO O UZYTKOWNIKU - JEGO DANE, JEGO ZAMOWIENIA + ogolne produkty
             products:
             [
-                {id: 0, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 20, size: "XL"},
-                {id: 1, name: "T-SHIRT BIAŁY L", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 10, size: "L"},
-                {id: 2, name: "T-SHIRT CZARNY M", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
-                {id: 3, name: "T-SHIRT BIAŁY M", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
-                {id: 4, name: "T-SHIRT CZARNY XL", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
-                {id: 5, name: "T-SHIRT CZARNY L", price:"109.99", desc: "xyz", category: "T-SHIRTY", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 0, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 20, size: "XL"},
+                {id: 1, name: "T-SHIRT BIAŁY L", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 10, size: "L"},
+                {id: 2, name: "T-SHIRT CZARNY M", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 3, name: "T-SHIRT BIAŁY M", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 4, name: "T-SHIRT CZARNY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 5, name: "T-SHIRT CZARNY L", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
             ],
             user:
             [
@@ -81,6 +81,22 @@ const store = createStore({
     getters: {
         getProducts (state) {
             return state.products
+        },
+        getPreviewTshirts (state) {
+            let products = [];
+            let counter = 0;
+            for(let i = 0; i < state.products.length; i++)
+            {
+                if(counter < 3)
+                {
+                    if(state.products[i].category == "t-shirt")
+                    {
+                        products.push(state.products[i])
+                        counter++;
+                    }
+                }
+            }
+            return products
         },
         getOrders (state) {
             return state.orders

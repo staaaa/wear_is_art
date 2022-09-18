@@ -6,10 +6,16 @@ import Register from '../views/Register.vue'
 import Product from '../views/Product.vue'
 import Account from '../views/Account.vue'
 import Admin from '../views/AdminPanel/Admin.vue'
+import Home from '../views/Home.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/',
+      name: '/',
+      component: Home
+    },
     {
       path: '/t-shirt',
       name: 't-shirt',
@@ -31,8 +37,8 @@ const router = createRouter({
       component: Menu
     },
     {
-      path: '/product/:productId',
-      name: 'product',
+      path: '/:category/produkt/:productId',
+      name: 'produkt',
       component: Product
     },
     {

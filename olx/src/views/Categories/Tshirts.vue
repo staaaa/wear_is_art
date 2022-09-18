@@ -5,7 +5,7 @@
         <p>Najlepsze t-shirty specjalnie dla Ciebie.</p>
         <div class="items">
             <div class="item" v-for="item in products" v-bind:key="item">
-                <AuctionVue :to="item.id" :src="item.src" :name="item.name" :price="item.price"/>
+                <AuctionVue :category="item.category" :to="item.id" :src="item.src" :name="item.name" :price="item.price"/>
             </div>
         </div>
         <Footer/>
@@ -41,7 +41,6 @@ export default {
 }
 </script>
 <style scoped>
-/* dla desktopu */
 .items{
     display:grid;
     grid-template-columns: auto;
@@ -82,14 +81,5 @@ h2, p{
         display:grid;
         grid-template-columns: auto auto auto auto;
     }
-}
-#cursor {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    display: block;
-    border-radius: 50%;
-    border: 3px solid #101010;
-    z-index: 9999;
 }
 </style>

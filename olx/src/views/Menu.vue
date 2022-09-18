@@ -9,15 +9,8 @@
             </router-link>
             <p class="subtext">KONTO</p>
             <router-link to="/account">
-                <p class="menu-item">KONTO</p>
+                <p class="menu-item">USTAWIENIA KONTA</p>
             </router-link>
-            <p class="menu-item">USTAWIENIA</p>
-            <span class="small">
-                <p class="subtext">KONTAKT Z NAMI</p>
-                <p class="menu-item">maniek_koks@gmail.com</p>
-            </span>
-        </div>
-        <div class="contact">
             <p class="subtext">KONTAKT Z NAMI</p>
             <p class="menu-item">maniek_koks@gmail.com</p>
         </div>
@@ -43,7 +36,7 @@ p{
     font-family:'Red Hat Display';
     padding:10px 0;
     margin-left:20px;
-    font-size:0.9rem;
+    font-size: 1.5rem;
 }
 .menu-item{
     font-weight: 500;
@@ -54,20 +47,20 @@ p{
 }
 .subtext{
     font-weight:700;
-    font-size:0.775rem;
+    font-size:1.275rem;
     margin-top:20px;
 }
 .close{
     position:absolute;
     top:80px;
     right:15%;
-    width:25px;
-    height:25px;
+    width:15px;
+    height:15px;
     cursor:pointer;
 }
 .main{
     position:absolute;
-    left:15%;
+    left:10%;
     top:80px;
 }
 .small{
@@ -76,21 +69,10 @@ p{
 .contact{
     display:none;
 }
-@media screen and (min-width:1000px) {
-    p{
-        font-size:1.5rem;
-    }
-    .subtext{
-        font-size:1.275rem;
-    }
-    .contact{
-        display:initial;
-        position:absolute;
-        bottom:265px;
-        left:600px;
-    }
-    .small{
-        display:none;
+@media screen and (min-width:700px){
+    .close{
+        width:25px;
+        height:25px;
     }
 }
 </style>
