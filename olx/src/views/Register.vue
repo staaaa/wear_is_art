@@ -5,10 +5,10 @@
         <p>Zarejestruj się, aby móc wygodniej korzystać z serwisu.</p>
         <div class="form-wrapper">
             <form action="" @submit.prevent="">
-                <VInput class="input" type="text" placeholder="PODAJ EMAIL" href="../../static/assets/icons/at-solid.svg"/>
                 <VInput class="input" type="text" placeholder="PODAJ NAZWE UŻYTKOWNIKA" href="../../static/assets/icons/user-solid.svg"/>
                 <VInput class="input" type="text" placeholder="PODAJ IMIĘ" href="../../static/assets/icons/user-solid.svg"/>
                 <VInput class="input" type="text" placeholder="PODAJ NAZWISKO" href="../../static/assets/icons/user-solid.svg"/>
+                <VInput class="input" type="text" placeholder="PODAJ EMAIL" href="../../static/assets/icons/at-solid.svg"/>
                 <VInput class="input" type="password" placeholder="PODAJ HASŁO" href="../../static/assets/icons/lock-solid.svg"/>
                 <VInput class="input" type="password" placeholder="POTWIERDŹ HASŁO" href="../../static/assets/icons/lock-solid.svg"/>
                 <VButton class="input submit" value="ZAREJESTRUJ KONTO" @click="register"/>

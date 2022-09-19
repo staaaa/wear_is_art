@@ -204,6 +204,9 @@ input{
     display:flex;
     justify-content: left;
     flex-direction: column;
+    width:80%;
+    margin-left:auto;
+    margin-right:auto;
 }
 @media screen and (min-width: 780px) {
     .info-wrapper{
