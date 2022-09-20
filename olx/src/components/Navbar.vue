@@ -18,7 +18,7 @@
                         <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
                     </div>
                 </router-link>
-                <router-link v-if="getIsLogged" to="/account">
+                <router-link v-if="getIsLogged" to="/konto">
                     <span class="login">KONTO</span>
                     <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
                 </router-link>

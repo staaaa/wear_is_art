@@ -7,6 +7,7 @@ import Product from '../views/Product.vue'
 import Account from '../views/Account.vue'
 import Admin from '../views/AdminPanel/Admin.vue'
 import Home from '../views/Home.vue'
+import Regulations from '../views/Regulations.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,8 +28,8 @@ const router = createRouter({
       component: Login
     },
     {
-      path: '/register',
-      name: 'register',
+      path: '/rejestracja',
+      name: 'rejestracja',
       component: Register
     },
     {
@@ -42,14 +43,19 @@ const router = createRouter({
       component: Product
     },
     {
-      path: '/account',
-      name: 'account',
+      path: '/konto',
+      name: 'konto',
       component: Account
     },
     {
       path: '/admin',
       name: 'admin',
       component: Admin,
+    },
+    {
+      path: '/regulamin',
+      name: '/regulamin',
+      component: Regulations,
     }
   ]
 })

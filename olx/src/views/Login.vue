@@ -11,7 +11,7 @@
                 <VButton class="input submit" value="ZALOGUJ SIĘ" @click="login"/>
             </form>
             <VLine class="input line"/>
-            <router-link to="/register">
+            <router-link to="/rejestracja">
                 <p class="subtext">NIE MASZ JESZCZE KONTA? ZAREJESTRUJ SIĘ TUTAJ</p>
             </router-link>
             <router-link to="/">

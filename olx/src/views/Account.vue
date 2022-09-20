@@ -94,16 +94,19 @@
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
 </template>
 <script>
 import Navbar from '../components/Navbar.vue';
-import VButton from '../components/Button.vue'
+import VButton from '../components/Button.vue';
+import Footer from '../components/Footer.vue';
 import { mapGetters } from 'vuex';
 export default {
     components:{
         Navbar,
         VButton,
+        Footer,
     },
     computed:{
         ...mapGetters([

@@ -14,6 +14,11 @@
             </div>
             <div class="section">
                 <div class="row title">
+                    <router-link :to="'/regulamin'">
+                        <p>REGULAMIN</p>
+                    </router-link>
+                </div>
+                <div class="row title">
                     <p>KONTAKT</p>
                 </div>
                 <div class="row">
@@ -40,6 +45,7 @@
 </template>
 <script>
 import Line from './Line.vue';
+import { RouterLink, RouterView } from 'vue-router'
 export default {
     components:{
         Line,
