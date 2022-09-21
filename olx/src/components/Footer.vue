@@ -19,7 +19,9 @@
                     </router-link>
                 </div>
                 <div class="row title">
-                    <p>KONTAKT</p>
+                    <router-link :to="'/kontakt'">
+                        <p>KONTAKT</p>
+                    </router-link>
                 </div>
                 <div class="row">
                     <p>maniek_koks@gmail.com</p>

@@ -11,6 +11,14 @@
                 <p class="subtitle">2. TEST </p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam deserunt facilis soluta saepe cumque voluptate est doloremque, ipsam ducimus exercitationem esse veniam deleniti doloribus libero voluptatibus quis ex quasi at.</p>
             </div>
+            <div class="wrapper-subtext">
+                <p class="subtitle">3. TEST </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam deserunt facilis soluta saepe cumque voluptate est doloremque, ipsam ducimus exercitationem esse veniam deleniti doloribus libero voluptatibus quis ex quasi at.</p>
+            </div>
+            <div class="wrapper-subtext">
+                <p class="subtitle">4. TEST </p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam deserunt facilis soluta saepe cumque voluptate est doloremque, ipsam ducimus exercitationem esse veniam deleniti doloribus libero voluptatibus quis ex quasi at.</p>
+            </div>
         </div>
         <Footer/>
     </div>
