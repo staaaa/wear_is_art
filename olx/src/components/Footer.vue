@@ -23,9 +23,6 @@
                         <p>KONTAKT</p>
                     </router-link>
                 </div>
-                <div class="row">
-                    <p>maniek_koks@gmail.com</p>
-                </div>
             </div>
             <div class="section">
                 <div class="row title">
