@@ -8,6 +8,7 @@ import Account from '../views/Account.vue'
 import Admin from '../views/AdminPanel/Admin.vue'
 import Home from '../views/Home.vue'
 import Regulations from '../views/Regulations.vue'
+import NotFound from '../views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,6 +57,10 @@ const router = createRouter({
       path: '/regulamin',
       name: '/regulamin',
       component: Regulations,
+    },
+    { 
+      path: "/:catchAll(.*)",
+      component: NotFound, 
     }
   ]
 })
