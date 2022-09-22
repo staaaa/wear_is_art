@@ -1,27 +1,18 @@
 <template>
     <div class="wrapper">
         <div class="navbar">
-            <div class="left">
-                <router-link to="/menu">
-                    <img src="../../static/assets/icons/bars-solid.svg" alt="">
-                </router-link>
+            <div class="section left">
+                <img src="../../static/assets/icons/bars-solid.svg" @click="menuPush" alt="">
             </div>
-            <div class="center">
-                <router-link to="/">
-                    <p>WEAR IS ART?</p>
-                </router-link>
+            <div class="section center">
+                <p class='header' @click="homePush">WEAR IS ART?</p>
             </div>
-            <div class="right">
-                <router-link v-if="!getIsLogged" to="/login">
-                    <div>
-                        <span class="login">ZALOGUJ SIĘ</span>
-                        <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
-                    </div>
-                </router-link>
-                <router-link v-if="getIsLogged" to="/konto">
-                    <span class="login">KONTO</span>
-                    <img class="acc-img" src="../../static/assets/icons/user-solid.svg" alt="">
-                </router-link>
+            <div class="section right" @click="showProducts">
+                <span v-if="!getIsLogged" class="login" @click="loginPush">ZALOGUJ SIĘ</span>
+                <img v-if="!getIsLogged" class="acc-img" @click="loginPush" src="../../static/assets/icons/user-solid.svg" alt="">
+                <span v-if="getIsLogged" class="login" @click="accountPush">KONTO</span>
+                <img v-if="getIsLogged" class="acc-img" @click="accountPush" src="../../static/assets/icons/user-solid.svg" alt="">
+                <img src="../../static/assets/icons/cart-shopping-solid.svg" class='cart' @click="cartPush" alt="">
             </div>
         </div>
         <VLine class="line"/>
@@ -40,6 +31,23 @@ export default {
         ...mapGetters([
             'getIsLogged',
         ])
+    },
+    methods:{
+        loginPush(){
+            this.$router.push('/login');
+        },
+        accountPush(){
+            this.$router.push('/konto');
+        },
+        menuPush(){
+            this.$router.push('/menu');
+        },
+        homePush(){
+            this.$router.push('/');
+        },
+        cartPush(){
+            this.$router.push('/koszyk');
+        },
     }
 }
 </script>
@@ -48,6 +56,10 @@ export default {
     font-family:'Red Hat Display';
     font-weight: 700;
 }
+img, .cart{
+    width:24px;
+    height:24px;
+}
 .navbar{
     display:flex;
     width:80%;
@@ -55,51 +67,40 @@ export default {
     margin-right: auto;
     margin-top:20px;
     margin-bottom:10px;
-    justify-content: space-around;
+    font-size:1rem;
 }
-.center{
-    width:40%;
-    text-align:center;
-}
-.left, .right{
-    width:30%;
-    height:auto;
-    margin-left:20px;
-    margin-right:20px;
-}
-.right{
-    text-align: right;
+.section{
+    width:33%;
+    text-align: center;
     display:flex;
-    justify-content: right;
+    justify-content: center;
+    cursor:pointer;
+    align-items: center;
 }
 .line{
     margin-left:auto;
     margin-right:auto;
 }
-img{
-    width:25px;
-    height:25px;
-    cursor: pointer;
+.left{
+    width:33.5%;
+    display:flex;
+    justify-content: left;
+    padding-left:20px;
+}
+.right{
+    display:flex;
+    justify-content:right;
+    padding-right:20px;
+}
+.header{
+    font-size:1.5rem;
+    font-weight:700;
 }
 .login{
-    color:black;
-    font-size:0.9rem;
-    text-align: right;
-    min-width:300px;
-    padding-right:10px;
-    vertical-align: top;
+    margin-right:10px;
+    display:none;
 }
 .acc-img{
-    padding-bottom:7px;
-}
-@media screen and (max-width: 1000px){
-    .login{
-        font-size:0.75rem;
-    }
-}
-@media screen and (max-width: 650px){
-    .login{
-        display:none;
-    }
+    margin-right:30px;
 }
 </style>

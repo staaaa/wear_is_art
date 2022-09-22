@@ -19,17 +19,24 @@
                     {{product.desc}}
                 </p>
                 <div class="buttons">
-                    <VButton class="button" value="KUP"/>
-                    <VButton class="button" value="KONTAKT"/>
-                    <VButton class="button" value="PODOBNE"/>
+                    <div class="quantity">
+                        <input type="number" min="1" max="99" step="1" value="1">
+                        <div class="quantity-nav">
+                            <div class="quantity-button quantity-up" @click="quantityUp"><span class="plus">+</span></div>
+                            <div class="quantity-button quantity-down" @click="quantityDown">-</div>
+                        </div>
+                    </div>
+                    <VButton class="button" value="DODAJ DO KOSZYKA" @click="addToCart"/>
                 </div>
             </div>
         </div>
+        <Footer/>
     </div>
 </template>
 <script>
 import VButton from '../components/Button.vue'
 import Navbar from '../components/Navbar.vue';
+import Footer from '../components/Footer.vue'
 import { RouterLink } from 'vue-router';
 import { mapGetters, mapActions } from 'vuex';
 export default {
@@ -49,7 +56,26 @@ export default {
     components:{
       VButton,
       Navbar,
+      Footer,
     },
+    methods:{
+        addToCart(){
+            let input = document.querySelector("input[type='number']");
+            localStorage.setItem(this.product.id, input.value);
+        },
+        quantityUp(){
+            let input = document.querySelector("input[type='number']");
+            if(input.value != 99){
+                input.value++;
+            }
+        },
+        quantityDown(){
+            let input = document.querySelector("input[type='number']");
+            if(input.value != 1){
+                input.value--;
+            }
+        },
+    }
 }
 </script>
 <style scoped>
@@ -87,7 +113,7 @@ img{
     width:450px;
 }
 .button{
-    width:100px;
+    width:auto;
 }
 .buttons{
     margin-top:50px;
@@ -127,9 +153,55 @@ img{
     justify-content: center;
 }
 .button{
-    width:100px;
     margin-right:5px;
     margin-left:5px;
 }
+}
+.quantity {
+  position: relative;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button
+{
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number]
+{
+  -moz-appearance: textfield;
+}
+
+.quantity input {
+    font-family: 'Red Hat Display' ;
+    width: 45px;
+    height: 42px;
+    line-height: 1.65;
+    float: left;
+    display: block;
+    padding: 0;
+    padding-left: 15px;
+    border: 2px solid black;
+    border-radius:5px;
+}
+
+.quantity input:focus {
+    outline: 0;
+}
+
+.quantity-nav {
+    float: left;
+    position: relative;
+    height: 42px;
+    width:22px;
+}
+.quantity-button{
+    text-align: center;
+    font-size:1.rem;
+    cursor: pointer;
+    user-select: none;
+}
+.quantity-up{
+    border-bottom:2px solid black;
 }
 </style>

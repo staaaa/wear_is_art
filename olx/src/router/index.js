@@ -10,6 +10,7 @@ import Home from '../views/Home.vue'
 import Regulations from '../views/Regulations.vue'
 import NotFound from '../views/NotFound.vue'
 import Contact from '../views/Contact.vue'
+import Cart from '../views/Cart.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,6 +64,11 @@ const router = createRouter({
       path: '/kontakt',
       name: '/kontakt',
       component: Contact,
+    },
+    {
+      path: '/koszyk',
+      name: '/koszyk',
+      component: Cart,
     },
     //CATCH ALL MUSI BYC OSTATNIE
     { 

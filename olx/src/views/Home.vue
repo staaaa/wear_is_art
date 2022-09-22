@@ -118,7 +118,7 @@ export default {
     align-items: center;
 }
 .products{
-    margin-top:80px;
+    margin-top:40px;
 }
 .linia{
     margin:auto;
