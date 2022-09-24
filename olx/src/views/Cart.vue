@@ -5,8 +5,13 @@
             <div class="row">
                 <p class="title">KOSZYK</p>
             </div>
-            <div class="row">
-
+            <span v-if="cartProducts.length > 0">
+                <div v-for="cartProduct in cartProducts" v-bind:key="cartProduct" class="row">
+                    <CartProduct :product='cartProduct'/>
+                </div>
+            </span>
+            <div v-else class="row">
+                <p>WYGLĄDA NA TO, ŻE TWÓJ KOSZYK JEST PUSTY.</p>
             </div>
         </div>
         <Footer/>
@@ -15,11 +20,13 @@
 <script>
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
+import CartProduct from '../components/CartProduct.vue'
 import { mapGetters } from 'vuex';
 export default {
     components:{
-        Navbar,
-        Footer,
+    Navbar,
+    Footer,
+    CartProduct
     },
     computed:{
         ...mapGetters([
@@ -28,13 +35,25 @@ export default {
     },
     data(){
         return{
-            products: Object,
+            cartProducts: [],
         }
     },
     mounted(){
-        let allProducts = this.getProducts;
-        for(let i = 0; i < allProducts.length; i++){
-            
+        this.updateCart();
+    },
+    methods:{
+        updateCart(){
+            this.cartProducts = [];
+            let allProducts = this.getProducts;;
+
+            let j = 0;
+            for(let i = 0; i < allProducts.length; i++){
+                if(localStorage.getItem(allProducts[i].id) != null){
+                    this.cartProducts[j] = allProducts[i];
+                    this.cartProducts[j].quantity = localStorage.getItem(allProducts[i].id);
+                    j++;
+                }
+            }
         }
     }
 }
@@ -51,6 +70,7 @@ export default {
     display:flex;
     justify-content: center;
     align-content: center;
+    margin-bottom:20px;
 }
 .title{
     font-size:2rem;

@@ -59,9 +59,18 @@ export default {
       Footer,
     },
     methods:{
+        ...mapActions(['setModalCart']),
         addToCart(){
-            let input = document.querySelector("input[type='number']");
-            localStorage.setItem(this.product.id, input.value);
+            let input = document.querySelector("input[type='number']").value;
+            let productId = this.$route.params.productId;
+            let currentQuantity = localStorage.getItem(productId);
+            if(currentQuantity != null){
+                localStorage.setItem(productId, parseInt(currentQuantity) + parseInt(input));
+            }
+            else{
+                localStorage.setItem(productId, input);
+            }
+            this.setModalCart(true);
         },
         quantityUp(){
             let input = document.querySelector("input[type='number']");
@@ -125,12 +134,13 @@ img{
     height: 32px;
     position:absolute;
     left:11.2%;
-    top:99px;
     color:black;
+    display:none;
 }
-@media screen and (min-width: 446px){
+@media screen and (min-width: 650px){
     .icon{
-        top: 85px;
+        top: 92px;
+        display:initial
     }
 }
 @media screen and (max-width: 900px){
@@ -197,7 +207,7 @@ input[type=number]
 }
 .quantity-button{
     text-align: center;
-    font-size:1.rem;
+    font-size:1rem;
     cursor: pointer;
     user-select: none;
 }

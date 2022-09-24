@@ -45,6 +45,7 @@ const store = createStore({
                 },
             ],
             isLogged: false,
+            modalCart: false,
         }
     },
     //mutacje
@@ -60,7 +61,10 @@ const store = createStore({
         },
         SET_USER(state, payload){
             state.user = payload
-        }
+        },
+        SET_MODAL_CART(state, payload){
+            state.modalCart = payload
+        },
     },
     //actions
     actions: {
@@ -75,7 +79,10 @@ const store = createStore({
         },
         setUser(context, payload){
             context.commit('SET_USER', payload)
-        }
+        },
+        setModalCart(context, payload){
+            context.commit('SET_MODAL_CART', payload)
+        },
     },
     //getters
     getters: {
@@ -106,7 +113,10 @@ const store = createStore({
         },
         getUser(state){
             return state.user
-        }
+        },
+        getModalCart (state) {
+            return state.modalCart
+        },
     }
 })
 export default store;
