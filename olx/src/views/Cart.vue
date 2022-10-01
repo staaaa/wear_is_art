@@ -10,8 +10,9 @@
                     <CartProduct :product='cartProduct'/>
                 </div>
             </span>
-            <div v-else class="row">
-                <p>WYGLĄDA NA TO, ŻE TWÓJ KOSZYK JEST PUSTY.</p>
+            <div v-else>
+                <p class="row">WYGLĄDA NA TO, ŻE TWÓJ KOSZYK JEST PUSTY.</p>
+                <p class="row">PRZEJDŹ NA STRONĘ Z KOSZULKAMI I DODAJ SWÓJ PIERWSZY PRODUKT DO KOSZYKA.</p>
             </div>
         </div>
         <Footer/>

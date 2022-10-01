@@ -136,12 +136,6 @@ export default {
         grid-template-columns: auto auto auto;
     }
 }
-@media screen and (min-width: 1450px){
-    .items{
-        display:grid;
-        grid-template-columns: auto auto auto auto;
-    }
-}
 a{
     color:black;
 }

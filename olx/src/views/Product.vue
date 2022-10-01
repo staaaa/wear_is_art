@@ -20,7 +20,7 @@
                 </p>
                 <div class="buttons">
                     <div class="quantity">
-                        <input type="number" min="1" max="99" step="1" value="1">
+                        <input type="number" min="1" :max="product.quantity" step="1" value="1">
                         <div class="quantity-nav">
                             <div class="quantity-button quantity-up" @click="quantityUp"><span class="plus">+</span></div>
                             <div class="quantity-button quantity-down" @click="quantityDown">-</div>
@@ -47,7 +47,7 @@ export default {
     },
     data(){
         return{
-            product: Object
+            product: Object,
         }
     },
     mounted(){
@@ -61,20 +61,32 @@ export default {
     methods:{
         ...mapActions(['setModalCart']),
         addToCart(){
-            let input = document.querySelector("input[type='number']").value;
-            let productId = this.$route.params.productId;
-            let currentQuantity = localStorage.getItem(productId);
-            if(currentQuantity != null){
-                localStorage.setItem(productId, parseInt(currentQuantity) + parseInt(input));
+            let quantityMoreThenZero = false;
+            for(let i = 0; i < this.getProducts.length; i++){
+                if(this.getProducts[i].id == this.$route.params.productId && this.getProducts[i].quantity > 0)
+                {
+                    quantityMoreThenZero = true;
+                }
             }
-            else{
-                localStorage.setItem(productId, input);
+            if(quantityMoreThenZero)
+            {
+                let input = document.querySelector("input[type='number']").value;
+                let productId = this.$route.params.productId;
+                let currentQuantity = localStorage.getItem(productId);
+                if(currentQuantity != null){
+                    localStorage.setItem(productId, parseInt(currentQuantity) + parseInt(input));
+                }
+                else{
+                    localStorage.setItem(productId, input);
+                }
+                this.setModalCart(true);
             }
-            this.setModalCart(true);
+            
         },
+        //dodac funkcje ktora uniemozliwa wpisanie odrecznie wiekszej ilosci niz mozliwa
         quantityUp(){
             let input = document.querySelector("input[type='number']");
-            if(input.value != 99){
+            if(input.value != 99 && input.value < this.product.quantity){
                 input.value++;
             }
         },
