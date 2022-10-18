@@ -6,7 +6,7 @@
                 <p class="title">KOSZYK</p>
             </div>
             <span v-if="cartProducts.length > 0">
-                <div v-for="cartProduct in cartProducts" v-bind:key="cartProduct" class="row">
+                <div v-for="cartProduct in allCartThings" v-bind:key="cartProduct" class="row">
                     <CartProduct :product='cartProduct'/>
                 </div>
             </span>
@@ -32,11 +32,22 @@ export default {
     computed:{
         ...mapGetters([
             'getProducts',
-        ])
+        ]),
+        allCartThings() {
+            const allCartThings = []
+            for (let i = 0, len = Math.max(this.cartProducts.length, this.quantity.length); i < len; i++) {
+                allCartThings.push({
+                    cartProducts: this.cartProducts[i],
+                    quantity: this.quantity[i],
+                })
+            }
+            return allCartThings;
+        }
     },
     data(){
         return{
             cartProducts: [],
+            quantity: [],
         }
     },
     mounted(){
@@ -51,10 +62,11 @@ export default {
             for(let i = 0; i < allProducts.length; i++){
                 if(localStorage.getItem(allProducts[i].id) != null){
                     this.cartProducts[j] = allProducts[i];
-                    this.cartProducts[j].quantity = localStorage.getItem(allProducts[i].id);
+                    this.quantity[j] = localStorage.getItem(allProducts[i].id);
                     j++;
                 }
             }
+            // console.log(this.allCartThings[0].cartProducts);
         }
     }
 }

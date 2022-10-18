@@ -20,6 +20,14 @@ export default {
             'getModalCart',
         ])
     },
+    mounted(){
+        var ref = this;
+        window.onkeyup = function(e){
+            if(e.keyCode == 27){
+                ref.closeModal();
+            }
+        }
+    }
 }
 </script>
 <style scoped>

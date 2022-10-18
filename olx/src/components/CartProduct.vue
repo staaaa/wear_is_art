@@ -1,18 +1,18 @@
 <template>
     <div class="wrapper">
         <div class="left">
-            <img :src="product.src" alt="">
+            <img :src="product.cartProducts.src" alt="">
             <div class="data">
                 <div class="basic-data">
-                    <p class="title">{{product.name}}</p>
-                    <p class="desc">{{product.desc}}</p>
+                    <p class="title">{{product.cartProducts.name}}</p>
+                    <p class="desc">{{product.cartProducts.desc}}</p>
                 </div>
                 <div class="quantity">
                     <p class="quantity">
                         <span class="minus" @click="quantityDown">-</span> ILOŚĆ: {{product.quantity}}
                         <span class="plus" @click="quantityUp">+</span> 
                     </p>
-                    <p class="price">CENA: {{Math.round((product.price * product.quantity) * 100) / 100}} PLN</p>
+                    <p class="price">CENA: {{Math.round((product.cartProducts.price * product.quantity) * 100) / 100}} PLN</p>
                 </div>
             </div>
         </div>
@@ -28,22 +28,22 @@ export default {
     },
     methods:{
         deleteFromCart(){
-            localStorage.removeItem(this.product.id);
+            localStorage.removeItem(this.product.cartProducts.id);
             this.$parent.updateCart();
         },
         quantityUp(){
-            let currentQuantity = parseInt(localStorage.getItem(this.product.id));
+            let currentQuantity = parseInt(localStorage.getItem(this.product.cartProducts.id));
             if(currentQuantity < 99){
                 currentQuantity = currentQuantity + 1;
-                localStorage.setItem(this.product.id, currentQuantity);
+                localStorage.setItem(this.product.cartProducts.id, currentQuantity);
                 this.$parent.updateCart();
             }
         },
         quantityDown(){
-            let currentQuantity = parseInt(localStorage.getItem(this.product.id));
+            let currentQuantity = parseInt(localStorage.getItem(this.product.cartProducts.id));
             if(currentQuantity > 1){
                 currentQuantity = currentQuantity - 1;
-                localStorage.setItem(this.product.id, currentQuantity);
+                localStorage.setItem(this.product.cartProducts.id, currentQuantity);
                 this.$parent.updateCart();
             }
         }

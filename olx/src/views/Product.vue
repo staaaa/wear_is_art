@@ -20,7 +20,7 @@
                 </p>
                 <div class="buttons">
                     <div class="quantity">
-                        <input type="number" min="1" :max="product.quantity" step="1" value="1">
+                        <input class="number-input" type="number" min="1" :max="product.quantity" step="1" value="1">
                         <div class="quantity-nav">
                             <div class="quantity-button quantity-up" @click="quantityUp"><span class="plus">+</span></div>
                             <div class="quantity-button quantity-down" @click="quantityDown">-</div>
@@ -28,6 +28,8 @@
                     </div>
                     <VButton class="button" value="DODAJ DO KOSZYKA" @click="addToCart"/>
                 </div>
+                <p class="count-info-1"></p>
+                <p class="count-info-2"></p>
             </div>
         </div>
         <Footer/>
@@ -59,27 +61,43 @@ export default {
       Footer,
     },
     methods:{
-        ...mapActions(['setModalCart']),
+        ...mapActions([
+            'addCartProducts',
+            'setModalCart',
+        ]),
         addToCart(){
             let quantityMoreThenZero = false;
-            for(let i = 0; i < this.getProducts.length; i++){
-                if(this.getProducts[i].id == this.$route.params.productId && this.getProducts[i].quantity > 0)
-                {
-                    quantityMoreThenZero = true;
-                }
+            if(this.product.quantity > 0)
+            {
+                quantityMoreThenZero = true;
             }
+            else quantityMoreThenZero = false;
             if(quantityMoreThenZero)
             {
                 let input = document.querySelector("input[type='number']").value;
-                let productId = this.$route.params.productId;
-                let currentQuantity = localStorage.getItem(productId);
+                let currentQuantity = localStorage.getItem(this.product.id);
+                
                 if(currentQuantity != null){
-                    localStorage.setItem(productId, parseInt(currentQuantity) + parseInt(input));
+                    if(parseInt(input) + parseInt(currentQuantity) <= this.product.quantity)
+                    {
+                        localStorage.setItem(this.product.id, parseInt(currentQuantity) + parseInt(input));
+                        this.setModalCart(true);
+                        document.querySelector('.count-info-1').innerHTML = "";
+                        document.querySelector('.count-info-2').innerHTML = "";
+                    }
+                    else{
+                        document.querySelector('.count-info-1').innerHTML = "NIE MOŻNA DODAĆ WIĘCEJ PRODUKTÓW DO KOSZYKA.";
+                        document.querySelector('.count-info-2').innerHTML = "LICZBA PRODUKTOW W MAGAZYNIE: " + this.product.quantity; 
+                    }
+                }
+                else if(input <= this.product.quantity){
+                    localStorage.setItem(this.product.id, input);
+                    this.setModalCart(true);
                 }
                 else{
-                    localStorage.setItem(productId, input);
+                    document.querySelector('.count-info-1').innerHTML = "NIE MOŻNA DODAĆ WIĘCEJ PRODUKTÓW DO KOSZYKA.";
+                    document.querySelector('.count-info-2').innerHTML = "LICZBA PRODUKTOW W MAGAZYNIE: " + this.product.quantity; 
                 }
-                this.setModalCart(true);
             }
             
         },
@@ -225,5 +243,9 @@ input[type=number]
 }
 .quantity-up{
     border-bottom:2px solid black;
+}
+.count-info-1, .count-info-2{
+    font-size:1rem;
+    color:red;
 }
 </style>
