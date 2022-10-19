@@ -11,6 +11,7 @@ import Regulations from '../views/Regulations.vue'
 import NotFound from '../views/NotFound.vue'
 import Contact from '../views/Contact.vue'
 import Cart from '../views/Cart.vue'
+import Payment from '../views/Payment.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -69,6 +70,11 @@ const router = createRouter({
       path: '/koszyk',
       name: '/koszyk',
       component: Cart,
+    },
+    {
+      path: '/platnosc',
+      name: '/platnosc',
+      component: Payment,
     },
     //CATCH ALL MUSI BYC OSTATNIE
     { 

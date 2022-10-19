@@ -14,6 +14,10 @@
                 <p class="row">WYGLĄDA NA TO, ŻE TWÓJ KOSZYK JEST PUSTY.</p>
                 <p class="row">PRZEJDŹ NA STRONĘ Z KOSZULKAMI I DODAJ SWÓJ PIERWSZY PRODUKT DO KOSZYKA.</p>
             </div>
+            <div class="row">
+                <Button class="button" value="WYCZYŚĆ KOSZYK" @click="clearCart"/>
+                <Button class="button" value="PRZEJDŹ DO PŁATNOŚCI" @click="processPayment"/>
+            </div>
         </div>
         <Footer/>
     </div>
@@ -22,12 +26,14 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import CartProduct from '../components/CartProduct.vue'
+import Button from '../components/Button.vue'
 import { mapGetters } from 'vuex';
 export default {
     components:{
-    Navbar,
-    Footer,
-    CartProduct
+        Navbar,
+        Footer,
+        CartProduct,
+        Button,
     },
     computed:{
         ...mapGetters([
@@ -66,7 +72,15 @@ export default {
                     j++;
                 }
             }
-            // console.log(this.allCartThings[0].cartProducts);
+        },
+        clearCart(){
+            for(let i = 0; i < this.cartProducts.length; i++){
+                localStorage.removeItem(this.cartProducts[i].id);
+            }
+            this.cartProducts = [];
+        },
+        processPayment(){
+            this.$router.push('/platnosc');
         }
     }
 }
@@ -89,5 +103,9 @@ export default {
     font-size:2rem;
     font-weight:700;
     margin-top:20px;
+}
+.button{
+    width:250px;
+    margin: 0 15px;
 }
 </style>

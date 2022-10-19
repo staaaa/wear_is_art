@@ -33,7 +33,7 @@ export default {
         },
         quantityUp(){
             let currentQuantity = parseInt(localStorage.getItem(this.product.cartProducts.id));
-            if(currentQuantity < 99){
+            if(currentQuantity < 99 && currentQuantity < this.product.cartProducts.quantity){
                 currentQuantity = currentQuantity + 1;
                 localStorage.setItem(this.product.cartProducts.id, currentQuantity);
                 this.$parent.updateCart();

@@ -12,7 +12,7 @@
             </form>
             <VLine class="input line"/>
             <router-link to="/rejestracja">
-                <p class="subtext">NIE MASZ JESZCZE KONTA? ZAREJESTRUJ SIĘ TUTAJ</p>
+                <p class="subtext register">NIE MASZ JESZCZE KONTA? ZAREJESTRUJ SIĘ TUTAJ</p>
             </router-link>
             <router-link to="/">
                 <p class="subtext second">POWRÓT NA STRONĘ GŁÓWNĄ</p>
@@ -84,5 +84,8 @@ h2, p{
 }
 .second{
     text-decoration: 2px underline;
+}
+.register{
+    font-size:0.9rem !important;
 }
 </style>

@@ -36,7 +36,7 @@ export default {
     margin-right:auto;
     display:flex;
     flex-direction:column;
-    margin-top:20px;
+    margin-bottom: 50px;
 }
 .column{
     display:flex;
@@ -56,10 +56,12 @@ p{
 @media screen and (min-width:900px){
     .inner-wrapper{
         flex-direction: row;
+        margin-top:25px;
+        margin-bottom:25px;
     }
     .column{
-        width:50%;
         margin-top:0px;
+        width:50%;
     }
 }
 </style>

@@ -2,16 +2,13 @@
     <div class="wrapper">
         <div class="navbar">
             <div class="section left">
-                <img src="../../static/assets/icons/bars-solid.svg" @click="menuPush" alt="">
+                <img src="../../static/assets/icons/bars-solid.svg" class="menu" @click="menuPush" alt="">
             </div>
             <div class="section center">
                 <p class='header' @click="homePush">WEAR IS ART?</p>
             </div>
             <div class="section right" @click="showProducts">
-                <span v-if="!getIsLogged" class="login" @click="loginPush">ZALOGUJ SIĘ</span>
-                <img v-if="!getIsLogged" class="acc-img" @click="loginPush" src="../../static/assets/icons/user-solid.svg" alt="">
-                <span v-if="getIsLogged" class="login" @click="accountPush">KONTO</span>
-                <img v-if="getIsLogged" class="acc-img" @click="accountPush" src="../../static/assets/icons/user-solid.svg" alt="">
+                <img class="acc-img" @click="loginPush" src="../../static/assets/icons/user-solid.svg" alt="">
                 <img src="../../static/assets/icons/cart-shopping-solid.svg" class='cart' @click="cartPush" alt="">
             </div>
         </div>
@@ -34,10 +31,12 @@ export default {
     },
     methods:{
         loginPush(){
-            this.$router.push('/login');
-        },
-        accountPush(){
-            this.$router.push('/konto');
+            if(this.getIsLogged){
+                this.$router.push('/konto');
+            }
+            else{
+                this.$router.push('/login');
+            }
         },
         menuPush(){
             this.$router.push('/menu');
@@ -74,7 +73,6 @@ img, .cart{
     text-align: center;
     display:flex;
     justify-content: center;
-    cursor:pointer;
     align-items: center;
 }
 .line{
@@ -102,5 +100,8 @@ img, .cart{
 }
 .acc-img{
     margin-right:30px;
+}
+.acc-img, .cart, .header, .menu{
+    cursor: pointer;
 }
 </style>

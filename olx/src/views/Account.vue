@@ -111,7 +111,8 @@ export default {
     computed:{
         ...mapGetters([
             'getUser',
-            'getOrders'
+            'getOrders',
+            'getIsLogged',
         ])
     },
     data(){
@@ -180,6 +181,7 @@ export default {
         }
     },
     mounted(){
+        if(!this.getIsLogged) this.$router.push('/login');
         let user = this.getUser;
         this.orders = this.getOrders;
         
