@@ -7,9 +7,8 @@ node version >=14.0.0
 
 1. Open the terminal in the 'OLX' folder
 2. Write npm install or npm i
-3. Write 'npm install vue-router@4'
-4. Write 'npm run dev'
-5. The project should be hosted on your local port 3000
+3. Write 'npm run dev'
+4. The project should be hosted on your local port 3000
 
 
 #WHAT TO DO IF IT DOESNT WORK
