@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" v-if="product.cartProducts">
         <div class="left">
             <img :src="product.cartProducts.src" alt="">
             <div class="data">
