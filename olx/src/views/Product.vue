@@ -20,7 +20,7 @@
                 </p>
                 <div class="buttons">
                     <div class="quantity">
-                        <input class="number-input" type="number" min="1" :max="product.quantity" step="1" value="1">
+                        <input class="number-input" type="number" min="1" :max="quantity" step="1" value="1">
                         <div class="quantity-nav">
                             <div class="quantity-button quantity-up" @click="quantityUp"><span class="plus">+</span></div>
                             <div class="quantity-button quantity-down" @click="quantityDown">-</div>
@@ -30,6 +30,7 @@
                 </div>
                 <p class="count-info-1"></p>
                 <p class="count-info-2"></p>
+                <p class="count-info-3"></p>
             </div>
         </div>
         <Footer/>
@@ -40,20 +41,31 @@ import VButton from '../components/Button.vue'
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue'
 import { RouterLink } from 'vue-router';
-import { mapGetters, mapActions } from 'vuex';
+import { mapGetters } from 'vuex';
+import { mapActions } from 'vuex'
 export default {
     computed:{
         ...mapGetters([
             'getProducts',
+            'getCurrentProductCode',
+            'getQuantity'
         ])
     },
     data(){
         return{
             product: Object,
+            quantity: Number,
         }
     },
     mounted(){
-        this.product = this.getProducts[this.$route.params.productId];
+        for(let i = 0; i < this.getProducts.length; i++)
+        {
+            if(this.$route.params.productCode == this.getProducts[i].productCode){
+                this.product = this.getProducts[i];
+            }
+        }
+        this.setCurrentProductCode(this.$route.params.productCode);
+        this.quantity = this.getQuantity;
     },  
     components:{
       VButton,
@@ -64,10 +76,11 @@ export default {
         ...mapActions([
             'addCartProducts',
             'setModalCart',
+            'setCurrentProductCode',
         ]),
         addToCart(){
             let quantityMoreThenZero = false;
-            if(this.product.quantity > 0)
+            if(this.quantity > 0)
             {
                 quantityMoreThenZero = true;
             }
@@ -75,28 +88,31 @@ export default {
             if(quantityMoreThenZero)
             {
                 let input = document.querySelector("input[type='number']").value;
-                let currentQuantity = localStorage.getItem(this.product.id);
+                let currentQuantity = localStorage.getItem(this.product.productCode);
                 
                 if(currentQuantity != null){
-                    if(parseInt(input) + parseInt(currentQuantity) <= this.product.quantity)
+                    if(parseInt(input) + parseInt(currentQuantity) <= this.quantity)
                     {
-                        localStorage.setItem(this.product.id, parseInt(currentQuantity) + parseInt(input));
+                        localStorage.setItem(this.product.productCode, parseInt(currentQuantity) + parseInt(input));
                         this.setModalCart(true);
                         document.querySelector('.count-info-1').innerHTML = "";
                         document.querySelector('.count-info-2').innerHTML = "";
+                        document.querySelector('.count-info-3').innerHTML = "";
                     }
                     else{
-                        document.querySelector('.count-info-1').innerHTML = "NIE MOŻNA DODAĆ WIĘCEJ PRODUKTÓW DO KOSZYKA.";
-                        document.querySelector('.count-info-2').innerHTML = "LICZBA PRODUKTOW W MAGAZYNIE: " + this.product.quantity; 
+                        document.querySelector('.count-info-1').innerHTML = "NIE MOŻNA DODAĆ WIĘCEJ";
+                        document.querySelector('.count-info-2').innerHTML = "PRODUKTÓW DO KOSZYKA.";
+                        document.querySelector('.count-info-3').innerHTML = "LICZBA PRODUKTOW W MAGAZYNIE: " + this.quantity; 
                     }
                 }
-                else if(input <= this.product.quantity){
-                    localStorage.setItem(this.product.id, input);
+                else if(input <= this.quantity){
+                    localStorage.setItem(this.product.productCode, input);
                     this.setModalCart(true);
                 }
                 else{
-                    document.querySelector('.count-info-1').innerHTML = "NIE MOŻNA DODAĆ WIĘCEJ PRODUKTÓW DO KOSZYKA.";
-                    document.querySelector('.count-info-2').innerHTML = "LICZBA PRODUKTOW W MAGAZYNIE: " + this.product.quantity; 
+                    document.querySelector('.count-info-1').innerHTML = "NIE MOŻNA DODAĆ WIĘCEJ";
+                    document.querySelector('.count-info-2').innerHTML = "PRODUKTÓW DO KOSZYKA.";
+                    document.querySelector('.count-info-3').innerHTML = "LICZBA PRODUKTOW W MAGAZYNIE: " + this.quantity; 
                 }
             }
             
@@ -104,7 +120,7 @@ export default {
         //dodac funkcje ktora uniemozliwa wpisanie odrecznie wiekszej ilosci niz mozliwa
         quantityUp(){
             let input = document.querySelector("input[type='number']");
-            if(input.value != 99 && input.value < this.product.quantity){
+            if(input.value != 99 && input.value < this.quantity){
                 input.value++;
             }
         },
@@ -244,7 +260,7 @@ input[type=number]
 .quantity-up{
     border-bottom:2px solid black;
 }
-.count-info-1, .count-info-2{
+.count-info-1, .count-info-2, .count-info-3{
     font-size:1rem;
     color:red;
 }

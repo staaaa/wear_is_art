@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper">
-        <router-link :to="'/'+ category + '/produkt/' + to">
+        <router-link :to="'/'+ category + '/' + to">
             <img class="img" :src="src" alt="">
             <p class="name">{{name}}</p>
             <p class="price">{{price}}</p>
@@ -13,7 +13,7 @@ export default {
         src:String,
         name:String,
         price:String,
-        to:Number,
+        to:String,
         category:String,
     },
 }

@@ -5,7 +5,7 @@
         <p>Najlepsze t-shirty specjalnie dla Ciebie.</p>
         <div class="items">
             <div class="item" v-for="item in products" v-bind:key="item">
-                <AuctionVue :category="item.category" :to="item.id" :src="item.src" :name="item.name" :price="item.price"/>
+                <AuctionVue :category="item.category" :to="item.productCode" :src="item.src" :name="item.name" :price="item.price"/>
             </div>
         </div>
         <Footer/>

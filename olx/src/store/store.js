@@ -7,12 +7,15 @@ const store = createStore({
             //WCZYTYWANE Z BAZY DANYCH - DANE TYLKO O UZYTKOWNIKU - JEGO DANE, JEGO ZAMOWIENIA + ogolne produkty
             products:
             [
-                {id: 0, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 20, size: "XL"},
-                {id: 1, name: "T-SHIRT BIAŁY L", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 10, size: "L"},
-                {id: 2, name: "T-SHIRT CZARNY M", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
-                {id: 3, name: "T-SHIRT BIAŁY M", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
-                {id: 4, name: "T-SHIRT CZARNY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
-                {id: 5, name: "T-SHIRT CZARNY L", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", quantity: 5, size: "M"},
+                {id: 0, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT001", size: "XL"},
+                {id: 1, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT001", size: "XL"},
+                {id: 2, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT001", size: "XL"},
+                {id: 3, name: "T-SHIRT BIAŁY XL", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT001", size: "XL"},
+                {id: 4, name: "T-SHIRT BIAŁY L", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT002", size: "L"},
+                {id: 5, name: "T-SHIRT BIAŁY L", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT002", size: "L"},
+                {id: 6, name: "T-SHIRT BIAŁY M", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT003", size: "M"},
+                {id: 7, name: "T-SHIRT BIAŁY M", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT003", size: "M"},
+                {id: 8, name: "T-SHIRT BIAŁY M", price:"109.99", desc: "xyz", category: "t-shirt", src: "https://via.placeholder.com/300", orderId: null, productCode: "TSHIRT003", size: "M"},
             ],
             user:
             [
@@ -46,6 +49,7 @@ const store = createStore({
             ],
             isLogged: false,
             modalCart: false,
+            currentProductCode: null,
         }
     },
     //mutacje
@@ -65,6 +69,9 @@ const store = createStore({
         SET_MODAL_CART(state, payload){
             state.modalCart = payload
         },
+        SET_CURRENT_PRODUCT_CODE(state, payload){
+            state.currentProductCode = payload
+        }
     },
     //actions
     actions: {
@@ -83,11 +90,28 @@ const store = createStore({
         setModalCart(context, payload){
             context.commit('SET_MODAL_CART', payload)
         },
+        setCurrentProductCode(context, payload){
+            context.commit('SET_CURRENT_PRODUCT_CODE', payload)
+        }
     },
     //getters
     getters: {
         getProducts (state) {
-            return state.products
+            let products = [];
+            for(let i = 0; i < state.products.length; i++)
+            {
+                if(state.products[i].category == "t-shirt")
+                {
+                    if(products.length == 0)
+                    {
+                        products.push(state.products[i]);
+                    }
+                    else if(products.length != 0 && !products.some(e => e.productCode === state.products[i].productCode)){
+                        products.push(state.products[i]);
+                    }
+                }
+            }
+            return products
         },
         getPreviewTshirts (state) {
             let products = [];
@@ -98,12 +122,29 @@ const store = createStore({
                 {
                     if(state.products[i].category == "t-shirt")
                     {
-                        products.push(state.products[i])
-                        counter++;
+                        if(counter == 0)
+                        {
+                            products.push(state.products[i]);
+                            counter++;
+                        }
+                        else if(counter != 0 && !products.some(e => e.productCode === state.products[i].productCode)){
+                            products.push(state.products[i]);
+                            counter++;
+                        }
                     }
                 }
             }
             return products
+        },
+        getQuantity(state){
+            let quantity = 0;
+            for(let i = 0; i < state.products.length; i++)
+            {
+                if(state.products[i].productCode == state.currentProductCode){
+                    quantity++;
+                }
+            }
+            return quantity;
         },
         getOrders (state) {
             return state.orders
@@ -117,6 +158,9 @@ const store = createStore({
         getModalCart (state) {
             return state.modalCart
         },
+        getCurrentProductCode(state){
+            return state.currentProductCode;
+        }
     }
 })
 export default store;

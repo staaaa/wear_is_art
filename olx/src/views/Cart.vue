@@ -66,16 +66,16 @@ export default {
 
             let j = 0;
             for(let i = 0; i < allProducts.length; i++){
-                if(localStorage.getItem(allProducts[i].id) != null){
+                if(localStorage.getItem(allProducts[i].productCode) != null){
                     this.cartProducts[j] = allProducts[i];
-                    this.quantity[j] = localStorage.getItem(allProducts[i].id);
+                    this.quantity[j] = localStorage.getItem(allProducts[i].productCode);
                     j++;
                 }
             }
         },
         clearCart(){
             for(let i = 0; i < this.cartProducts.length; i++){
-                localStorage.removeItem(this.cartProducts[i].id);
+                localStorage.removeItem(this.cartProducts[i].productCode);
             }
             this.cartProducts = [];
         },

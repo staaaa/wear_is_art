@@ -22,28 +22,36 @@
     </div>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex';
 export default {
     props:{
         product: Object,
     },
+    computed:{
+        ...mapGetters(['getQuantity'])
+    },
     methods:{
+        ...mapActions([
+            'setCurrentProductCode'
+        ]),
         deleteFromCart(){
-            localStorage.removeItem(this.product.cartProducts.id);
+            localStorage.removeItem(this.product.cartProducts.productCode);
             this.$parent.updateCart();
         },
         quantityUp(){
-            let currentQuantity = parseInt(localStorage.getItem(this.product.cartProducts.id));
-            if(currentQuantity < 99 && currentQuantity < this.product.cartProducts.quantity){
+            this.setCurrentProductCode(this.product.cartProducts.productCode);
+            let currentQuantity = parseInt(localStorage.getItem(this.product.cartProducts.productCode));
+            if(currentQuantity < 99 && currentQuantity < this.getQuantity){
                 currentQuantity = currentQuantity + 1;
-                localStorage.setItem(this.product.cartProducts.id, currentQuantity);
+                localStorage.setItem(this.product.cartProducts.productCode, currentQuantity);
                 this.$parent.updateCart();
             }
         },
         quantityDown(){
-            let currentQuantity = parseInt(localStorage.getItem(this.product.cartProducts.id));
+            let currentQuantity = parseInt(localStorage.getItem(this.product.cartProducts.productCode));
             if(currentQuantity > 1){
                 currentQuantity = currentQuantity - 1;
-                localStorage.setItem(this.product.cartProducts.id, currentQuantity);
+                localStorage.setItem(this.product.cartProducts.productCode, currentQuantity);
                 this.$parent.updateCart();
             }
         }
