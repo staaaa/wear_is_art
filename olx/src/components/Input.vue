@@ -19,22 +19,33 @@ input{
     background-color:#f6f6f6;
     padding:10px 10px 10px 45px;
     border-radius:4px;
-    font-size:0.975rem;
+    font-size:0.5rem;
     font-family:'Red Hat Display';
     font-weight: 400;
     width:100%;
 }
-.wrapper{
-    width:80%;
-    position:relative;
-}
 img{
-    width:1.25rem;
-    height:1.25rem;
+    width:1rem;
+    height:1rem;
     color:white;
     display:block;
     position:absolute;
-    top:12px;
-    left:10px;
+    top:8px;
+    left:8px;
+}
+@media screen and (min-width: 600px){
+    input{
+        font-size: 0.975rem;
+    }
+    img{
+        width:1.25rem;
+        height:1.25rem;
+        top:12px;
+        left:10px
+    }
+}
+.wrapper{
+    width:80%;
+    position:relative;
 }
 </style>

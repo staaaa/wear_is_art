@@ -5,7 +5,6 @@
             <div class="data">
                 <div class="basic-data">
                     <p class="title">{{product.cartProducts.name}}</p>
-                    <p class="desc">{{product.cartProducts.desc}}</p>
                 </div>
                 <div class="quantity">
                     <p class="quantity">
@@ -63,6 +62,7 @@ export default {
     width:75%;
     display:flex;
     justify-content: space-between;
+    margin-left:5%;
 }
 .left{
     display:flex;
@@ -74,16 +74,37 @@ export default {
     justify-content: space-between;
 }
 .title{
-    font-size:1.5rem;
+    font-size:0.7rem;
     font-weight:700;
 }
-.desc{
-    font-size:0.7rem;
-    font-weight:100;
-}
 .quantity{
-    font-size:1rem;
+    font-size:0.8rem;
     font-weight:500;
+}
+img{
+    border-radius:10px;
+    width:100px;
+    height:100px;
+    box-shadow: rgba(0, 0, 0, 0.25) 1.95px 1.95px 2.6px;
+}
+.price{
+    font-weight:700;
+    font-size:0.7rem;
+}
+@media screen and (min-width: 600px){
+    .title{
+        font-size:1.5rem;
+    }
+    .quantity{
+        font-size:1rem;
+    }
+    img{
+        width:150px;
+        height:150px;
+    }
+    .price{
+        font-size:1rem;
+    }
 }
 .quantity-nav{
     font-size:2rem;
@@ -100,19 +121,12 @@ export default {
 .minus{
     bottom:-4px;
 }
-.price{
-    font-weight:700;
-}
 .x{
-    font-size:1.5rem;
+    font-size:2rem;
     position:relative;
-    bottom:10px;
+    bottom:30px;
     color:rgb(225, 120, 0);
     font-weight: 700;
     cursor: pointer;
-}
-img{
-    width:150px;
-    height:150px;
 }
 </style>

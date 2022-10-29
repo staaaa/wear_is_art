@@ -37,41 +37,7 @@
                         <VButton 
                         class="button" 
                         :value="changingCredentials? 'ZAPISZ ZMIANY' : 'ZMIEŃ DANE PODSTAWOWE'" 
-                        @click="changeCredentials()"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <p class="subtitle">DANE ADRESOWE</p>
-                        <p>
-                            <span class='big'>ULICA: </span>
-                            <span class="show">{{street}}</span>
-                            <input type="text" class="notShow" :placeholder="street">
-                        </p>
-                        <p>
-                            <span class='big'>NUMER BUDYNKU: </span>
-                            <span class="show">{{buildingNumber}}</span>
-                            <input type="text" class="notShow" :placeholder="buildingNumber">
-                        </p>
-                        <p>
-                            <span class='big'>NUMER MIESZKANIA: </span>
-                            <span class="show">{{flatNumber}}</span>
-                            <input type="text" class="notShow" :placeholder="flatNumber">
-                        </p>
-                        <p>
-                            <span class='big'>KOD POCZTOWY: </span>
-                            <span class="show">{{zipCode}}</span>
-                            <input type="text" class="notShow" :placeholder="zipCode">
-                        </p>
-                        <p>
-                            <span class='big'>KRAJ: </span>
-                            <span class="show">{{country}}</span>
-                            <input type="text" class="notShow" :placeholder="country">
-                        </p>
-                        <VButton 
-                        class="button" 
-                        :value="changingAdress? 'ZAPISZ ZMIANY' : 'ZMIEŃ DANE ADRESOWE'"
-                        @click="changeAdress"/>
+                        @click="changeCredentials"/>
                     </div>
                 </div>
             </div>
@@ -122,16 +88,10 @@ export default {
             surname: String,
             email: String,
             phone: String,
-            street: String,
-            buildingNumber: String,
-            flatNumber: String,
-            zipCode: String,
-            country: String,
 
             orders: Array,
 
             changingCredentials: false,
-            changingAdress: false,
         }
     },
     methods:{
@@ -157,28 +117,6 @@ export default {
                 this.changingCredentials = false;    
             }
         },
-        changeAdress(){
-            let labels = document.querySelectorAll(".show");
-            let inputs = document.querySelectorAll(".notShow");
-
-            for(let i = 5; i <= 9; i++)
-            {
-                labels[i].classList.add("notShow");
-                labels[i].classList.remove("show");
-
-                inputs[i].classList.add("show");
-                inputs[i].classList.remove("notShow");
-            }
-            if(!this.changingAdress)
-            {
-                this.changingAdress = true;
-            }
-            else
-            {
-                //request do api o zmiane danych
-                this.changingAdress = false;    
-            }
-        }
     },
     mounted(){
         if(!this.getIsLogged) this.$router.push('/login');

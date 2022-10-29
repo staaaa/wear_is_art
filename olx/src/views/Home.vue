@@ -93,6 +93,7 @@ export default {
 .title{
     font-size:1.75rem;
     font-weight:700;
+    text-align: center;
 }
 .subtitle{
     font-size:1.25rem;

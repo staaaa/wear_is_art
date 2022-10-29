@@ -91,8 +91,13 @@ img, .cart{
     padding-right:20px;
 }
 .header{
-    font-size:1.5rem;
+    font-size:0.8rem;
     font-weight:700;
+}
+@media screen and (min-width:630px){
+    .header{
+        font-size:1.5rem;
+    }
 }
 .login{
     margin-right:10px;

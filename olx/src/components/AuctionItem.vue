@@ -36,4 +36,8 @@ p{
     font-weight: 500;
     font-size:0.775rem;
 }
+img{
+    border-radius:20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 1.95px 1.95px 2.6px;
+}
 </style>

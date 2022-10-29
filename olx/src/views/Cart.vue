@@ -6,7 +6,7 @@
                 <p class="title">KOSZYK</p>
             </div>
             <span v-if="cartProducts.length > 0">
-                <div v-for="cartProduct in allCartThings" v-bind:key="cartProduct" class="row">
+                <div v-for="cartProduct in allCartThings" v-bind:key="cartProduct" class="row products">
                     <CartProduct :product='cartProduct'/>
                 </div>
             </span>
@@ -14,9 +14,9 @@
                 <p class="row">WYGLĄDA NA TO, ŻE TWÓJ KOSZYK JEST PUSTY.</p>
                 <p class="row">PRZEJDŹ NA STRONĘ Z KOSZULKAMI I DODAJ SWÓJ PIERWSZY PRODUKT DO KOSZYKA.</p>
             </div>
-            <div class="row">
+            <div class="row buttons">
                 <Button class="button" value="WYCZYŚĆ KOSZYK" @click="clearCart"/>
-                <Button class="button" value="PRZEJDŹ DO PŁATNOŚCI" @click="processPayment"/>
+                <Button class="button" value="PRZEJDŹ DO PŁATNOŚCI" @click="processPayment"/>
             </div>
         </div>
         <Footer/>
@@ -80,7 +80,10 @@ export default {
             this.cartProducts = [];
         },
         processPayment(){
-            this.$router.push('/platnosc');
+            if(this.cartProducts.length > 0)
+            {
+                this.$router.push('/platnosc');
+            }
         }
     }
 }
@@ -97,15 +100,34 @@ export default {
     display:flex;
     justify-content: center;
     align-content: center;
-    margin-bottom:20px;
+    margin-bottom:10px;
 }
 .title{
     font-size:2rem;
     font-weight:700;
     margin-top:20px;
 }
+.products{
+    display:flex;
+    justify-content: left;
+    margin-left:10%;
+}
 .button{
     width:250px;
-    margin: 0 15px;
+    margin: 10px 15px;
+}
+.buttons{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media screen and (min-width:600px) {
+    .button{
+        margin: 0 15px;
+    }
+    .buttons{
+        flex-direction: row;
+        margin-top:25px;
+    }
 }
 </style>

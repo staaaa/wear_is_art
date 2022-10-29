@@ -70,7 +70,7 @@
     </div>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import VButton from '../Button.vue';
 export default {
     components:{
@@ -79,9 +79,11 @@ export default {
     computed:{
         ...mapGetters([
             'getProducts',
+            'getQuantity'
         ])
     },
     methods:{
+        ...mapActions(['setCurrentProductCode']),
         addProducts(){
             //request do api i dodanie produktu
         },
@@ -104,9 +106,10 @@ export default {
             let cell4 = row.insertCell();
             let cell5 = row.insertCell();
 
-            cell1.appendChild(document.createTextNode(products[i].id));
+            cell1.appendChild(document.createTextNode(products[i].productCode));
             cell2.appendChild(document.createTextNode(products[i].name));
-            cell3.appendChild(document.createTextNode(products[i].quantity));
+            this.setCurrentProductCode(products[i].productCode);
+            cell3.appendChild(document.createTextNode(this.getQuantity));
             cell4.appendChild(document.createTextNode(products[i].size));
             cell5.appendChild(document.createTextNode(products[i].price));
             rows++;

@@ -166,6 +166,8 @@ h2, p{
 }
 img{
     width:450px;
+    border-radius:20px;
+    box-shadow: rgba(0, 0, 0, 0.25) 1.95px 1.95px 2.6px;
 }
 .button{
     width:auto;
