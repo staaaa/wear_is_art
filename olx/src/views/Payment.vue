@@ -11,9 +11,27 @@
         <div v-for="cartProduct in allCartThings" v-bind:key="cartProduct" class="row products">
             <CartProduct :product='cartProduct'/>
         </div>
-        <VLine class="input line"/>
+        <VLine class="line"/>
+        <span v-if="!getIsLogged">
+            <div class="row">
+                <p class="subtitle">DANE DO WYSYŁKI</p>
+            </div>
+            <div class="row">
+                <div class="row-form">
+                    <div class="form-wrapper">
+                        <VInput class="input" type="text" placeholder="IMIĘ" href="../../static/assets/icons/user-solid.svg"/>
+                        <VInput class="input" type="text" placeholder="NAZWISKO" href="../../static/assets/icons/user-solid.svg"/>
+                    </div>
+                    <div class="form-wrapper">
+                        <VInput class="input" type="text" placeholder="ADRES E-MAIL" href="../../static/assets/icons/user-solid.svg"/>
+                        <VInput class="input" type="text" placeholder="NUMER TELEFONU" href="../../static/assets/icons/user-solid.svg"/>
+                    </div>
+                </div>
+            </div>
+            <VLine class="line"/>
+        </span>
         <div class="row">
-            <p class="subtitle">WYSYŁKA</p>
+            <p class="subtitle">DANE ADRESOWE</p>
         </div>
         <div class="row">
             <div class="row-form">
@@ -35,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <VLine class="input line"/>
+        <VLine class="line"/>
         <div class="row">
             <p class="subtitle">FORMA PŁATNOŚCI</p>
         </div>
@@ -49,7 +67,7 @@
             </div>
         </div>
         <div class="row">
-            <VButton :value="'PRZEJDŹ DO PODSUMOWANIA'" class="button"/>
+            <VButton :value="'PRZEJDŹ DO PODSUMOWANIA'" class="button" @click="pushSummarize"/>
         </div>
     </div>
     <Footer/>
@@ -63,7 +81,7 @@ import VButton from '../components/Button.vue'
 import VInput from '../components/Input.vue'
 import VLine from '../components/Line.vue'
 import VRadio from '../components/Radio.vue'
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 export default {
     components:{
         Navbar,
@@ -77,6 +95,9 @@ export default {
     computed:{
         ...mapGetters([
             'getProducts',
+            'getIsLogged',
+            'getUser',
+            'getUserOrderData',
         ]),
         allCartThings() {
             const allCartThings = []
@@ -99,9 +120,12 @@ export default {
         this.updateCart();
     },
     methods:{
+        ...mapActions([
+            'setUserOrderData',
+        ]),
         updateCart(){
             this.cartProducts = [];
-            let allProducts = this.getProducts;;
+            let allProducts = this.getProducts;
 
             let j = 0;
             for(let i = 0; i < allProducts.length; i++){
@@ -111,6 +135,33 @@ export default {
                     j++;
                 }
             }
+        },
+        pushSummarize(){
+            let userData = [];
+            let inputs = document.querySelectorAll(".input > input");
+            if(!this.getIsLogged){
+                for(let i = 0; i < inputs.length; i++){
+                    userData[i] = inputs[i].value;
+                }
+            }
+            else{
+                userData[0] = this.getUser[0].name;
+                userData[1] = this.getUser[0].surname;
+                userData[2] = this.getUser[0].email;
+                userData[3] = this.getUser[0].phone;
+                for(let i = 0; i < inputs.length; i++){
+                    userData[i+4] = inputs[i].value;
+                }
+            }
+            let orderData = [];
+            for(let i = 0; i < this.cartProducts.length; i++){
+                orderData[i] = {'productCode' : this.cartProducts[i].productCode, 'quantity' : this.quantity[i]};
+            }
+            let userOrderData = [];
+            userOrderData[0] = userData;
+            userOrderData[1] = orderData;
+            this.setUserOrderData(userOrderData);
+            this.$router.push('/podsumowanie');
         },
     }
 }
@@ -138,6 +189,8 @@ export default {
 }
 .line{
     margin-top:60px;
+    margin-left:auto;
+    margin-right:auto;
 }
 .title{
     font-size:1.5rem;

@@ -50,6 +50,7 @@ const store = createStore({
             isLogged: false,
             modalCart: false,
             currentProductCode: null,
+            userOrderData: null,
         }
     },
     //mutacje
@@ -71,6 +72,9 @@ const store = createStore({
         },
         SET_CURRENT_PRODUCT_CODE(state, payload){
             state.currentProductCode = payload
+        },
+        SET_USER_ORDER_DATA(state, payload){
+            state.userOrderData = payload;
         }
     },
     //actions
@@ -92,6 +96,9 @@ const store = createStore({
         },
         setCurrentProductCode(context, payload){
             context.commit('SET_CURRENT_PRODUCT_CODE', payload)
+        },
+        setUserOrderData(context, payload){
+            context.commit('SET_USER_ORDER_DATA', payload);
         }
     },
     //getters
@@ -160,7 +167,10 @@ const store = createStore({
         },
         getCurrentProductCode(state){
             return state.currentProductCode;
-        }
+        },
+        getUserOrderData(state){
+            return state.userOrderData;
+        },
     }
 })
 export default store;

@@ -12,6 +12,7 @@ import NotFound from '../views/NotFound.vue'
 import Contact from '../views/Contact.vue'
 import Cart from '../views/Cart.vue'
 import Payment from '../views/Payment.vue';
+import Summarize from '../views/Summarize.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -75,6 +76,11 @@ const router = createRouter({
       path: '/platnosc',
       name: '/platnosc',
       component: Payment,
+    },
+    {
+      path: '/podsumowanie',
+      name: '/podsumowanie',
+      component: Summarize,
     },
     //CATCH ALL MUSI BYC OSTATNIE
     { 
