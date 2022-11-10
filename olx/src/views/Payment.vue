@@ -122,6 +122,7 @@ export default {
     methods:{
         ...mapActions([
             'setUserOrderData',
+            'setPaymentProceeded',
         ]),
         updateCart(){
             this.cartProducts = [];
@@ -155,12 +156,13 @@ export default {
             }
             let orderData = [];
             for(let i = 0; i < this.cartProducts.length; i++){
-                orderData[i] = {'productCode' : this.cartProducts[i].productCode, 'quantity' : this.quantity[i]};
+                orderData[i] = {'productCode' : this.cartProducts[i].productCode, 'category' : this.cartProducts[i].category, 'quantity' : this.quantity[i]};
             }
             let userOrderData = [];
             userOrderData[0] = userData;
             userOrderData[1] = orderData;
             this.setUserOrderData(userOrderData);
+            this.setPaymentProceeded(true);
             this.$router.push('/podsumowanie');
         },
     }

@@ -51,6 +51,7 @@ const store = createStore({
             modalCart: false,
             currentProductCode: null,
             userOrderData: null,
+            paymentProceeded: false,
         }
     },
     //mutacje
@@ -75,7 +76,10 @@ const store = createStore({
         },
         SET_USER_ORDER_DATA(state, payload){
             state.userOrderData = payload;
-        }
+        },
+        SET_PAYMENT_PROCEEDED(state, payload){
+            state.paymentProceeded = payload;
+        },
     },
     //actions
     actions: {
@@ -99,7 +103,10 @@ const store = createStore({
         },
         setUserOrderData(context, payload){
             context.commit('SET_USER_ORDER_DATA', payload);
-        }
+        },
+        setPaymentProceeded(context, payload){
+            context.commit('SET_PAYMENT_PROCEEDED', payload);
+        },
     },
     //getters
     getters: {
@@ -170,6 +177,9 @@ const store = createStore({
         },
         getUserOrderData(state){
             return state.userOrderData;
+        },
+        getPaymentProceeded(state){
+            return state.paymentProceeded;
         },
     }
 })
