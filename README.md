@@ -1,5 +1,7 @@
 # wear_is_art
 
+Simple SPA for an online shop (no connection to backend setup)
+
 #WHAT YOU NEED TO RUN THE PROJECT
 node version >=14.0.0
 
